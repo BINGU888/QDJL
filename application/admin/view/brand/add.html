@@ -1,0 +1,70 @@
+{extend name="public/base" /}
+{block name="main"}
+<div class="page-container">
+	<form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data" action="{:url('Brand/save')}" method="post">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>品牌名称：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="" placeholder="" id="" name="brandname">
+			</div>
+		</div>
+		  <div class="row cl">
+            <label class="form-label col-xs-5 col-sm-2">推荐：</label>
+            <div class="formControls col-xs-5 col-sm-5 skin-minimal">
+                <div class="check-box">
+                    <input type="checkbox" id="checkbox-1" name="status" value="2">
+                    <label for="checkbox-1"></label>
+                </div>
+            </div>
+        </div>
+
+        	  <div class="row cl">
+            <label class="form-label col-xs-5 col-sm-2"><span class="c-red">*</span>上传logo：</label>
+            <div class="formControls col-xs-5 col-sm-5 skin-minimal">
+                <div class="check-box">
+                   <input type="file" name="image" value="选择图片"/>
+                    <label for="checkbox-1"></label>
+                </div>
+            </div>
+        </div>
+       
+  
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<span class="select-box">
+				<select name="cid" class="select">
+					<option value="">请选择</option>
+					{volist name="cateRes" id="cate"}
+					<option value="{$cate.id}"><?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $cate['level']);?>
+
+					{if condition="($cate['level'])"}
+					├
+					{/if}
+
+					{$cate.name}</option>
+					{/volist}
+
+				</select>
+				</span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>品牌描述：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<textarea name="content" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)"></textarea>
+				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+			</div>
+		</div>
+
+
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button onClick="article_save_submit();" class="btn btn-primary radius" type=""><i class="Hui-iconfont">&#xe632;</i> 添加</button>
+			</div>
+		</div>
+	</form>
+</div>
+{/block}
+ {/block}

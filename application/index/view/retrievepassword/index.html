@@ -1,0 +1,66 @@
+{include file="public/headers" /}
+<script type="text/javascript">
+    var InterValObj; //timer变量，控制时间
+    var count = 120; //间隔函数，1秒执行
+    var curCount;//当前剩余秒数
+
+    function sendMessage() {
+        curCount = count;
+        //设置button效果，开始计时
+        $("#btnSendCode").attr("disabled", "true");
+        $("#btnSendCode").val(curCount + "s秒");
+        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+        //向后台发送处理数据
+        var url = "{:url('Merchant/send')}";
+        var phone = $('#phone').val();
+        // alert(phone);
+
+        var phone = {phone:phone};
+        $.post(url,phone,function($data){
+            alert($data.msg);
+            if ($data.wait == 3) {
+                curCount = 0;
+            }
+        })
+    }
+
+    //timer处理函数
+    function SetRemainTime() {
+        if (curCount == 0) {
+            window.clearInterval(InterValObj);//停止计时器
+            $("#btnSendCode").removeAttr("disabled");//启用按钮
+            $("#btnSendCode").val("重新发送");
+        }
+        else {
+            curCount--;
+            $("#btnSendCode").val( curCount + "s秒");
+        }
+    }
+</script>
+<!--找回密码-->
+<div class="zhuce">
+    <div class="ZC_con">
+        <div class="zhuce_con">
+            <h2>找回密码</h2>
+            <form action="{:url('Retrievepassword/update')}" method="post">
+                <!--<p><b>*</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="zhanghao" type="text" name="name" value="" placeholder="用户名" style="background:#FFF url(images/ico.jpg) no-repeat center right ; background-position:250px 13px; border:1px #e1e1e1 solid;"/><p><br>-->
+                <!--<p><b>*</b>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="zhanghao" name="email" type="text" value="" placeholder="请输入邮箱"/></p><br>-->
+
+                <p><b>*</b> 手机号：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="phone" name="phone" class="zhanghao" type="text" value="" placeholder=""/><input id="btnSendCode" style="width: 100px; color: red" class="position" type="button" value="发送验证码" onclick="sendMessage()" /><p><br>
+                <p><b>*</b> 验证码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name='code' value="" placeholder=""/></p><br>
+                <p><b>*</b> 新密码：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="mima" name="password" type="password" value="" placeholder="" style="background:#FFF url(images/mm.png) no-repeat center right ; background-position:248px 8px; border:1px #e1e1e1 solid;"/></p><br>
+                <p><b>*</b>确认新密码：<input class="mima" name="passwords" type="password" value="" placeholder="" style="background:#FFF url(images/mm.png) no-repeat center right ; background-position:248px 8px; border:1px #e1e1e1 solid;"/></p><br>
+                <!--<p><input type="checkbox" style="width: 20px;height: 20px;'" value="1" name="agree"><input class="xuankuang" type="checkbox" name="checkbox1" id="checkbox1" style="width:20px; height:1px;">同意<a href="#" name="" style="border-bottom:1px solid #209ad9; color:#209ad9;">《平台用户协议》</a> </p><br>-->
+                <p>
+                <form><input class="tj" type="submit" value="找回密码" style=" width:270px; height:40px; background:#0365c7; color:#fff; border:none; margin-top:15px; cursor:pointer;"/></form>
+                </p><br>
+                <!--<h3>还没有账号？<a href="#">立即注册!</a></h3>-->
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>
+
+
+</div>
+
+{include file="public/footers" /}

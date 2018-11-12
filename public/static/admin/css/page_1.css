@@ -1,0 +1,22 @@
+.chengshi{ width:100%; height:auto;}
+.chengshi .CS_banner{ width:1200px; height:300px; margin:0 auto;}
+.chengshi .hotCity{ width:1200px; height:60px; border-bottom:1px solid #999; margin:0 auto; line-height:60px;}
+.hotCity b{ float:left; font-size:14px; padding-right:20px; color:#333;}
+.hotCity a{ float:left; font-size:14px; color:#c30715; padding-right:20px;}
+.hotCity #cs{ float:left;}
+.hotCity #cs li{ float:left; } 
+.hotCity #cs li a{ font-size:14px; color:#333; padding-right:10px;}
+.chengshi .chooseCity{ width:1200px; height:60px; border-bottom:1px solid #999; margin:0 auto;}
+.chooseCity p{ font-size:14px; float:left; line-height:60px;}
+#distpicker5 .form-group .form-control{ margin-top:20px; margin-left:10px; width:100px; height:25px;}
+.form-group .submit{ width:80px; height:25px; outline:none; border:none; background:#62a50e; color:#fff;}
+.form-group span{ font-size:14px; color:#333; margin-left:10px; font-weight:800;}
+.form-group .text{ width:220px; height:20px; margin-left:10px;}
+.form-group .jrcs{ width:80px; height:25px; outline:none; border:none; background:#62a50e; color:#fff;}
+.chengshi .xzChengshi{ width:1200px; height:auto; margin:0 auto;}
+.xzChengshi #szmA{ width:1200px; text-align:center; float:left;  margin-top:15px;}
+.xzChengshi #szmA ul{ width:1150px; float:right; text-align:left;}
+#szmA p{ float:left; margin-top:10px;}
+.xzChengshi p{ font-size:14px; color:#333; font-weight:800; margin-top:20px;}
+.xzChengshi #szmA li{ font-size:14px; color:#666; float:left; width:80px; margin-top:10px;}
+.xzChengshi #szmA li.on{ color:#333; font-weight:800;}

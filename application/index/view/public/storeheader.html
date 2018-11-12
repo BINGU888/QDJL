@@ -1,0 +1,120 @@
+   <!--店铺页面开始-->
+    <!--店铺广告-->
+    <div class="dp_gg">
+    	<div class="dpgg_con">
+        	<div class="dpggCon_L">
+            	<div class="wz"><h2>{$buser.enterprisename}</h2></div>
+                	<div class="icon">
+                	<ul>
+                        <li><a href="#"><img src="__STATIC__/index/images/zheng.png"/></a></li>
+                        <li><a href="#" title="营业执照已审核"><img src="__STATIC__/index/images/shenhe.png"/></a></li>
+                        <li><span>诚信通1年</span></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+                <div class="guige">
+                    {if condition="$bstore neq null"}
+                	<div class="txt"><p><span>[产品:]</span>{$bstore->companyphone} </p></div>
+                    <div class="txt"><p><span>[售后:]</span>{$bstore->salesphone} </p></div>
+                    <div class="txt"><p><span>[技术:]</span>{$bstore->technologyphone}</p></div>
+                    {/if}
+            	</div>
+            </div>
+            <div class="dpggCon_R">
+            	<form>
+                	<input class="text" type="text" value="" placeholder="请输入搜索内容"/>
+                    <input class="btn" type="submit" value="搜店内"/>
+                </form>
+                <div class="online">
+                    {if condition="$bstore neq null"}
+                	<a href="http://shang.qq.com/email/stop/email_stop.html?qq={$bstore->contactqq}&sig=1443a8cf2b571e23b291ce3dfca18c9c6e1c61e857743e66&tttt=1"><img src="__STATIC__/index/images/zxzx.png"/></a>
+                    {/if}
+                    <a href=""><img src="__STATIC__/index/images/ggwx.png"></a>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+
+    <!--店铺广告-->
+	<!--店铺导航-->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#dpNav_meun').mouseenter(function(){
+			$('#dpNav_list').stop().slideDown(300);
+			$('#dpNav_list').mouseenter(function(){
+			$('#dpNav_list').stop();
+
+		});
+});
+		$("#dpNav_meun, #dpNav_list").mouseleave(function() {
+			$('#dpNav_list').stop().slideUp(250);
+		});
+});
+</script>
+<div class="dp_nav">
+    	<div class="dpNav">
+        	<div id="dpNav_meun">
+            	<p>全部分类<img src="__STATIC__/index/images/bpNav.png"/></p>
+
+            </div>
+            <!--下拉内容-->
+            <div id="dpNav_list">
+                <ul id="dpNav_nav">
+                	{volist name="all" id="vo"}
+                	<li id="dpNav_con1" class="dpNav_con">
+                    	<img src="__STATIC__/index/images/diannao.png" width="22">
+                        <p>{$vo.data.name}</p>
+
+                        <div class="clear"></div>
+                        <div class="right_list">
+
+                        		{volist name="vo.child" id="twotree"}
+                        	<div class="dpNav_neirong">
+
+									<p>{$twotree.data.name}</p>
+
+									<div class="xinghao">
+									{volist name="twotree.child" id="threetree"}
+
+										<a href="{:url('store/list',['pid'=>$key,'id'=>$bstore->uid])}"><span>{$threetree.name}</span></a>
+										{/volist}
+
+
+									</div>
+
+									<div class="clear"></div>
+								</div>
+								{/volist}
+                        </div>
+                    </li>
+                    {/volist}
+                    <div class="clear"></div>
+            	</ul>
+            </div>
+            <!--下拉内容-->
+            <div class="dpNav_con">
+                <ul>
+                    <li><a href="{:url('store/index',['id'=>$buser.id])}">店铺首页</a></li>
+                    {if condition="$bstore neq null"}
+                    <li><a href="{:url('store/promotion',['id'=>$bstore->uid])}">促销信息</a></li>
+
+                    <li><a href="{:url('store/introduction',['id'=>$bstore->uid])}">店铺简介</a></li>
+                    <li><a href="{:url('store/honor',['bid'=>$bstore->uid])}">荣誉资质</a></li>
+                    <li><a href="{:url('store/information',['bid'=>$bstore->uid])}">商户资质</a></li>
+
+                       {else}
+                       <li><a href="">促销信息</a></li>
+                       <li><a href="">店铺简介</a></li>
+                    <li><a href="">荣誉资质</a></li>
+                    <!--    <li><a href="">荣誉资质</a></li> -->
+                       {/if}
+
+                    <!-- <li><a href="">联系方式</a></li> -->
+                </ul>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+</div>

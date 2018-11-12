@@ -1,0 +1,78 @@
+{extend name="public/base" /}
+{block name="main"}
+
+
+  <div class="cl pd-5 bg-1 bk-gray mt-20">
+   <br>
+    <span class="r">共有数据：<strong>88</strong> 条</span>
+  </div>
+  <table class="table table-border table-bordered table-hover table-bg table-sort">
+    <thead>
+      <tr class="text-c">
+    
+        <th width="80">ID</th>
+        <th width="100">公司名称</th>
+        <th width="80">联系人姓名</th>
+        <th width="90">公司电话</th>
+        <th width="150">公司QQ</th>
+        <th width="">公司地址</th>
+        <th width="">主营业务</th>
+        <th width="70">操作</th>
+<!--         <th width="110">操作</th> -->
+      </tr>
+    </thead>
+    <tbody>
+    {volist name="res" id ="vo"}
+      <tr class="text-c">
+      
+        <td>{$vo.id}</td>
+       
+        <td><u style="cursor:pointer" class="text-primary" onclick="user_show('10001','360','','张三','user-show.html')"></u>{$vo.company}</td>
+        <td>{$vo.name}</td>
+        <td>{$vo.phone}</td>
+        <td>{$vo.qq}</td>
+        <td class="text-l">{$vo.address}</td>
+        <td>{$vo.content}</td>
+        <td class="user-status"><a href="{:url('Card/status',['status'=>'1','id'=>$vo.id])}"><span class="label label-success">已通过</span></a></td>
+<!--         <td class="f-14 user-manage"><a style="text-decoration:none" onClick="user_stop(this,'10001')" href="javascript:;" title="停用">
+        <a href="{:url('Messagestatus/adopt',['id'=>$vo.id])}"><span class="label label-warning">通过</span></a>
+<a href="{:url('Card/delete',['id'=>$vo.id])}"><span class="label label-danger">删除</span></a>
+
+
+
+         <a title="删除" href="javascript:;" onclick="user_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="icon-trash"></i></a></td> -->
+      </tr>
+        {/volist}
+    </tbody>
+  </table>
+  <div id="pageNav" class="pageNav"></div>
+</div>
+<!--_footer 作为公共模版分离出去-->
+
+<script type="text/javascript">
+window.onload = (function(){
+    // optional set
+    pageNav.pre="&lt;上一页";
+    pageNav.next="下一页&gt;";
+    // p,当前页码,pn,总页面
+    pageNav.fn = function(p,pn){$("#pageinfo").text("当前页:"+p+" 总页: "+pn);};
+    //重写分页状态,跳到第三页,总页33页
+    pageNav.go(1,13);
+});
+$('.table-sort').dataTable({
+	"lengthMenu":false,//显示数量选择 
+	"bFilter": false,//过滤功能
+	"bPaginate": false,//翻页信息
+	"bInfo": false,//数量信息
+	"aaSorting": [[ 1, "desc" ]],//默认第几个排序
+	"bStateSave": true,//状态保存
+	"aoColumnDefs": [
+	  //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+	  {"orderable":false,"aTargets":[0,8,9]}// 制定列不参与排序
+	]
+});
+</script>
+</body>
+</html>
+{/block}
+ {/block}

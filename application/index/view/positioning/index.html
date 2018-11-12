@@ -1,0 +1,794 @@
+	{include file="public/headers" /}
+
+<!--城市页面开始-->	
+<div class="chengshi">
+	<div class="CS_banner">
+		<img src="__STATIC__/index/images/dp_banner.jpg"/>
+    </div>
+    
+    <div class="hotCity">
+    	<b>热门城市入口</b>
+        <a href="/">进入北京站 > </a>
+    	<ul id="cs">
+        	<li><a href="/">北京</a></li>
+            <li><a href="/">上海</a></li>
+            <li><a href="/">广州</a></li>
+            <li><a href="/">深圳</a></li>
+            <li><a href="/">武汉</a></li>
+            <li><a href="/">南京</a></li>
+            <li><a href="/">天津</a></li>
+            <li><a href="/">杭州</a></li>
+            <div class="clear"></div>
+        </ul>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div class="chooseCity">
+    	<p>按照省份选择</p>
+    	<form class="form-inline">
+          <div id="distpicker5">
+                <div class="form-group">
+                  <select class="form-control" id="province10"></select>
+                  <select class="form-control" id="city10"></select>
+                  <input type="submit" class="submit" value="提交"/>
+                  <span>或者</span>
+                  <input type="text" class="text" value="" placeholder="城市名、拼音、电话区号"/>
+                  <input type="submit" class="jrcs" value="进入城市"/>
+                </div>
+          </div>
+    </form>
+    </div>
+    <script src="js/distpicker.data.js"></script>
+	  <script src="js/distpicker.js"></script>
+	  <script src="js/main.js"></script>
+    
+    <div class="xzChengshi">
+    	<p>按照拼音首字母选择</p>
+      {foreach $data as $letterk=>$letterv}
+        <div id="szmA">
+        	<p>{$letterk}</p>
+        	<ul>
+              {foreach $letterv as $ctiyk=>$cityv}
+			        <li><a href="">{$cityv.name}</a></li>
+              {/foreach}
+            </ul>
+            <div class="clear"></div>
+        </div>
+        {/foreach}
+      <!--    <div id="szmA">
+         	<p>B</p>
+        	<ul>
+                     -->
+	<!-- 		  <li><a href="">北京</a></li>
+              <li><a href="">保定</a></li>
+              <li><a href="">滨州</a></li>
+              <li><a href="">包头</a></li>
+              <li><a href="">宝鸡</a></li>
+              <li><a href="">本溪</a></li>
+              <li><a href="">蚌埠</a></li>
+              <li><a href="">北海</a></li>
+              <li><a href="">巴彦淖尔</a></li>
+              <li><a href="">白城</a></li>
+              <li><a href="">白山</a></li>
+              <li><a href="">亳州</a></li>
+              <li><a href="">巴中</a></li>
+              <li><a href="">白银</a></li>
+              <li><a href="">百色</a></li>
+              <li><a href="">毕节</a></li>
+              <li><a href="">巴音郭楞</a></li>
+              <li><a href="">保山</a></li>
+              <li><a href="">博尔塔拉</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>C</p>
+        	<ul>     
+			  <li><a href="">成都</a></li>
+              <li><a href="">重庆</a></li>
+              <li><a href="">长沙</a></li>
+              <li><a href="">长春</a></li>
+              <li><a href="">常州</a></li>
+              <li><a href="">沧州</a></li>
+              <li><a href="">赤峰</a></li>
+              <li><a href="">承德</a></li>
+              <li><a href="">常德</a></li>
+              <li><a href="">长治</a></li>
+              <li><a href="">郴州</a></li>
+              <li><a href="">滁州</a></li>
+              <li><a href="">巢湖</a></li>
+              <li><a href="">潮州</a></li>
+              <li><a href="">昌吉</a></li>
+              <li><a href="">池州</a></li>
+              <li><a href="">楚雄</a></li>
+              <li><a href="">崇左</a></li>
+              <li><a href="">昌都</a></li>
+              <li><a href="">朝阳</a></li>
+              <li><a href="">常熟</a></li>
+              <li><a href="">慈溪</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>D</p> 
+        	<ul>
+			  <li><a href="">大连</a></li>
+              <li><a href="">东莞</a></li>
+              <li><a href="">德州</a></li>
+              <li><a href="">东营</a></li>
+              <li><a href="">大庆</a></li>
+              <li><a href="">大同</a></li>
+              <li><a href="">丹东</a></li>
+              <li><a href="">儋州</a></li>
+              <li><a href="">德阳</a></li>
+              <li><a href="">达州</a></li>
+              <li><a href="">大理</a></li>
+              <li><a href="">大兴安岭</a></li>
+              <li><a href="">定西</a></li>
+              <li><a href="">德宏</a></li>
+              <li><a href="">迪庆</a></li>
+              <li><a href="">钓鱼岛</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+         <div id="szmA">
+         	<p>E</p>
+        	<ul>
+                  
+			  <li><a href="">鄂尔多斯</a></li>
+              <li><a href="">恩施</a></li>
+              <li><a href="">鄂州</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+         <div id="szmA">
+         	<p>F</p>
+        	<ul>
+			  <li><a href="">福州</a></li>
+              <li><a href="">佛山</a></li>
+              <li><a href="">抚顺</a></li>
+              <li><a href="">阜阳</a></li>
+              <li><a href="">阜新</a></li>
+              <li><a href="">抚州</a></li>
+              <li><a href="">防城港</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>G</p>
+        	<ul>
+			  <li><a href="">广州</a></li>
+              <li><a href="">贵阳</a></li>
+              <li><a href="">桂林</a></li>
+              <li><a href="">赣州</a></li>
+              <li><a href="">广元</a></li>
+              <li><a href="">广安</a></li>
+              <li><a href="">贵港</a></li>
+              <li><a href="">固原</a></li>
+              <li><a href="">甘南</a></li>
+              <li><a href="">甘孜</a></li>
+              <li><a href="">果洛</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>H</p>
+        	<ul>
+			  <li><a href="">杭州</a></li>
+              <li><a href="">惠州</a></li>
+              <li><a href="">哈尔滨</a></li>
+              <li><a href="">合肥</a></li>
+              <li><a href="">呼和浩特</a></li>
+              <li><a href="">海口</a></li>
+              <li><a href="">邯郸</a></li>
+              <li><a href="">菏泽</a></li>
+              <li><a href="">衡水</a></li>
+              <li><a href="">淮安</a></li>
+              <li><a href="">衡阳</a></li>
+              <li><a href="">葫芦岛</a></li>
+              <li><a href="">淮南</a></li>
+              <li><a href="">汉中</a></li>
+              <li><a href="">怀化</a></li>
+              <li><a href="">淮北</a></li>
+              <li><a href="">黄冈</a></li>
+              <li><a href="">湖州</a></li>
+              <li><a href="">黄石</a></li>
+              <li><a href="">呼伦贝尔</a></li>
+              <li><a href="">河源</a></li>
+              <li><a href="">鹤壁</a></li>
+              <li><a href="">鹤岗</a></li>
+              <li><a href="">黄山</a></li>
+              <li><a href="">红河</a></li>
+              <li><a href="">河池</a></li>
+              <li><a href="">哈密</a></li>
+              <li><a href="">黑河</a></li>
+              <li><a href="">贺州</a></li>
+              <li><a href="">海西</a></li>
+              <li><a href="">和田</a></li>
+              <li><a href="">海北</a></li>
+              <li><a href="">海东</a></li>
+              <li><a href="">黄南</a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>J</p>
+        	<ul>
+			  <li><a href="">济南</a></li>
+              <li><a href="">济宁</a></li>
+              <li><a href="">吉林</a></li>
+              <li><a href="">锦州</a></li>
+              <li><a href="">金华</a></li>
+              <li><a href="">嘉兴</a></li>
+              <li><a href="">江门</a></li>
+              <li><a href="">荆州</a></li>
+              <li><a href="">焦作</a></li>
+              <li><a href="">晋中</a></li>
+              <li><a href="">佳木斯</a></li>
+              <li><a href="">九江</a></li>
+              <li><a href="">晋城</a></li>
+              <li><a href="">荆门</a></li>
+              <li><a href="">鸡西</a></li>
+              <li><a href="">吉安</a></li>
+              <li><a href="">揭阳</a></li>
+              <li><a href="">景德镇</a></li>
+              <li><a href="">济源</a></li>
+              <li><a href="">酒泉</a></li>
+              <li><a href="">金昌</a></li>
+              <li><a href="">嘉峪关</a></li>
+              <li><a href="">胶州</a></li>
+              <li><a href="">即墨</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>K</p>
+        	<ul>
+			  <li><a href="">昆明</a></li>
+              <li><a href="">开封</a></li>
+              <li><a href="">喀什</a></li>
+              <li><a href="">克拉玛依</a></li>
+              <li><a href="">库尔勒</a></li>
+              <li><a href="">克孜勒苏</a></li>
+              <li><a href="">昆山</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>L</p>
+        	<ul>
+			  <li><a href="">兰州</a></li>
+              <li><a href="">拉萨</a></li>
+              <li><a href="">廊坊</a></li>
+              <li><a href="">临沂</a></li>
+              <li><a href="">洛阳</a></li>
+              <li><a href="">聊城</a></li>
+              <li><a href="">柳州</a></li>
+              <li><a href="">连云港</a></li>
+              <li><a href="">临汾</a></li>
+              <li><a href="">漯河</a></li>
+              <li><a href="">辽阳</a></li>
+              <li><a href="">乐山</a></li>
+              <li><a href="">泸州</a></li>
+              <li><a href="">六安</a></li>
+              <li><a href="">娄底</a></li>
+              <li><a href="">莱芜</a></li>
+              <li><a href="">龙岩</a></li>
+              <li><a href="">吕梁</a></li>
+              <li><a href="">丽水</a></li>
+              <li><a href="">凉山</a></li>
+              <li><a href="">丽江</a></li>
+              <li><a href="">六盘水</a></li>
+              <li><a href="">辽源</a></li>
+              <li><a href="">来宾</a></li>
+              <li><a href="">临沧</a></li>
+              <li><a href="">陇南</a></li>
+              <li><a href="">临夏</a></li>
+              <li><a href="">林芝</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        <p>M</p>
+        	<ul>
+			  <li><a href="">绵阳</a></li>
+              <li><a href="">牡丹江</a></li>
+              <li><a href="">茂名</a></li>
+              <li><a href="">梅州</a></li>
+              <li><a href="">马鞍山</a></li>
+              <li><a href="">眉山</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+         <div id="szmA">
+        	<p>N</p>
+        	<ul>
+			  <li><a href="">南京</a></li>
+              <li><a href="">宁波</a></li>
+              <li><a href="">南宁</a></li>
+              <li><a href="">南昌</a></li>
+              <li><a href="">南通</a></li>
+              <li><a href="">南阳</a></li>
+              <li><a href="">南充</a></li>
+              <li><a href="">内江</a></li>
+              <li><a href="">南平</a></li>
+              <li><a href="">宁德</a></li>
+              <li><a href="">怒江</a></li>
+              <li><a href="">那曲</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>P</p>
+        	<ul>
+			  <li><a href="">平顶山</a></li>
+              <li><a href="">濮阳</a></li>
+              <li><a href="">盘锦</a></li>
+              <li><a href="">莆田</a></li>
+              <li><a href="">攀枝花</a></li>
+              <li><a href="">萍乡</a></li>
+              <li><a href="">平凉</a></li>
+              <li><a href="">普洱</a></li>
+              <li><a href="">郫县</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>Q</p>
+        	<ul>
+			  <li><a href="">青岛</a></li>
+              <li><a href="">琼海</a></li>
+              <li><a href="">秦皇岛</a></li>
+              <li><a href="">泉州</a></li>
+              <li><a href="">齐齐哈尔</a></li>
+              <li><a href="">清远</a></li>
+              <li><a href="">曲靖</a></li>
+              <li><a href="">衢州</a></li>
+              <li><a href="">庆阳</a></li>
+              <li><a href="">七台河</a></li>
+              <li><a href="">钦州</a></li>
+              <li><a href="">潜江</a></li>
+              <li><a href="">黔东南</a></li>
+              <li><a href="">黔南</a></li>
+              <li><a href="">黔西南</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        
+         <div id="szmA">
+        	<p>R</p>
+        	<ul>
+			  <li><a href="">日照</a></li>
+              <li><a href="">日喀则</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>S</p>
+        	<ul>
+			  <li><a href="">上海</a></li>
+              <li><a href="">深圳</a></li>
+              <li><a href="">沈阳</a></li>
+              <li><a href="">石家庄</a></li>
+              <li><a href="">苏州</a></li>
+              <li><a href="">汕头</a></li>
+              <li><a href="">商丘</a></li>
+              <li><a href="">三亚</a></li>
+              <li><a href="">宿迁</a></li>
+              <li><a href="">绍兴</a></li>
+              <li><a href="">十堰</a></li>
+              <li><a href="">四平</a></li>
+              <li><a href="">三门峡</a></li>
+              <li><a href="">邵阳</a></li>
+              <li><a href="">上饶</a></li>
+              <li><a href="">遂宁</a></li>
+              <li><a href="">三明</a></li>
+              <li><a href="">绥化</a></li>
+              <li><a href="">石河子</a></li>
+              <li><a href="">宿州</a></li>
+              <li><a href="">韶关</a></li>
+              <li><a href="">松原</a></li>
+              <li><a href="">随州</a></li>
+              <li><a href="">汕尾</a></li>
+              <li><a href="">双鸭山</a></li>
+              <li><a href="">朔州</a></li>
+              <li><a href="">石嘴山</a></li>
+              <li><a href="">商洛</a></li>
+              <li><a href="">神农架</a></li>
+              <li><a href="">山南</a></li>
+              <li><a href="">双流</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>T</p>
+        	<ul>
+			  <li><a href="">天津</a></li>
+              <li><a href="">太原</a></li>
+              <li><a href="">唐山</a></li>
+              <li><a href="">泰安</a></li>
+              <li><a href="">台州</a></li>
+              <li><a href="">泰州</a></li>
+              <li><a href="">铁岭</a></li>
+              <li><a href="">通辽</a></li>
+              <li><a href="">通化</a></li>
+              <li><a href="">天水</a></li>
+              <li><a href="">铜陵</a></li>
+              <li><a href="">铜川</a></li>
+              <li><a href="">铜仁</a></li>
+              <li><a href="">天门</a></li>
+              <li><a href="">塔城</a></li>
+              <li><a href="">吐鲁番</a></li>
+              <li><a href="">图木舒克</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>W</p>
+        	<ul>
+			  <li><a href="">武汉</a></li>
+              <li><a href="">无锡</a></li>
+              <li><a href="">乌鲁木齐</a></li>
+              <li><a href="">威海</a></li>
+              <li><a href="">潍坊</a></li>
+              <li><a href="">温州</a></li>
+              <li><a href="">芜湖</a></li>
+              <li><a href="">渭南</a></li>
+              <li><a href="">乌海</a></li>
+              <li><a href="">梧州</a></li>
+              <li><a href="">乌兰察布</a></li>
+              <li><a href="">武威</a></li>
+              <li><a href="">文山</a></li>
+              <li><a href="">吴忠</a></li>
+              <li><a href="">五家渠</a></li>
+              <li><a href="">五指山</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>X</p>
+        	<ul>
+			  <li><a href="">西安</a></li>
+              <li><a href="">厦门</a></li>
+              <li><a href="">西宁</a></li>
+              <li><a href="">徐州</a></li>
+              <li><a href="">咸阳</a></li>
+              <li><a href="">邢台</a></li>
+              <li><a href="">襄阳</a></li>
+              <li><a href="">新乡</a></li>
+              <li><a href="">湘潭</a></li>
+              <li><a href="">许昌</a></li>
+              <li><a href="">信阳</a></li>
+              <li><a href="">孝感</a></li>
+              <li><a href="">忻州</a></li>
+              <li><a href="">咸宁</a></li>
+              <li><a href="">新余</a></li>
+              <li><a href="">宣城</a></li>
+              <li><a href="">仙桃</a></li>
+              <li><a href="">锡林郭勒</a></li>
+              <li><a href="">湘西</a></li>
+              <li><a href="">兴安</a></li>
+              <li><a href="">西双版纳</a></li>
+              <li><a href="">香港</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+         <div id="szmA">
+        	<p>Y</p>
+        	<ul>
+			  <li><a href="">银川</a></li>
+              <li><a href="">宜昌</a></li>
+              <li><a href="">烟台</a></li>
+              <li><a href="">扬州</a></li>
+              <li><a href="">盐城</a></li>
+              <li><a href="">营口</a></li>
+              <li><a href="">岳阳</a></li>
+              <li><a href="">运城</a></li>
+              <li><a href="">榆林</a></li>
+              <li><a href="">宜宾</a></li>
+              <li><a href="">阳泉</a></li>
+              <li><a href="">延安</a></li>
+              <li><a href="">益阳</a></li>
+              <li><a href="">永州</a></li>
+              <li><a href="">玉林</a></li>
+              <li><a href="">宜春</a></li>
+              <li><a href="">阳江</a></li>
+              <li><a href="">延边</a></li>
+              <li><a href="">玉溪</a></li>
+              <li><a href="">伊犁</a></li>
+              <li><a href="">云浮</a></li>
+              <li><a href="">伊春</a></li>
+              <li><a href="">雅安</a></li>
+              <li><a href="">鹰潭</a></li>
+              <li><a href="">玉树</a></li>
+              <li><a href="">义乌</a></li>
+              <div class="clear"></div>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div id="szmA">
+        	<p>Z</p>
+        	<ul>
+			  <li><a href="">郑州</a></li>
+              <li><a href="">珠海</a></li>
+              <li><a href="">淄博</a></li>
+              <li><a href="">中山</a></li>
+              <li><a href="">枣庄</a></li>
+              <li><a href="">张家口</a></li>
+              <li><a href="">株洲</a></li>
+              <li><a href="">镇江</a></li>
+              <li><a href="">周口</a></li>
+              <li><a href="">湛江</a></li>
+              <li><a href="">驻马店</a></li>
+              <li><a href="">肇庆</a></li>
+              <li><a href="">自贡</a></li>
+              <li><a href="">遵义</a></li>
+              <li><a href="">漳州</a></li>
+              <li><a href="">舟山</a></li>
+              <li><a href="">张掖</a></li>
+              <li><a href="">资阳</a></li>
+              <li><a href="">张家界</a></li>
+              <li><a href="">昭通</a></li>
+              <li><a href="">中卫</a></li>-->
+              <div class="clear"></div> 
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+<div class="clear"></div>
+<!--城市页面结束-->
+
+			<!--管理开始-->
+		<div class="guanli">
+			<div class="mbox">
+				<div class="guanli_top">
+					<ul>
+						<li>
+							<img src="__STATIC__/index/images/sheng.png" />
+							<div class="guanli_sheng">
+								<p>省钱实惠</p>
+								<font>50000+高性价比商品</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bao.png" />
+							<div class="guanli_sheng">
+								<p>售后保证</p>
+								<font>为您提供售后无忧保障</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/zhi.png" />
+							<div class="guanli_sheng">
+								<p>100%品质保障</p>
+								<font>全场正品,采购无忧</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bi.png" />
+							<div class="guanli_sheng">
+								<p>货比三家</p>
+								<font>比一比,价格更透明</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+                
+				<div class="guanli_bottom">
+					<div class="bt_left">
+						<ul>
+							<font>新手入门</font>
+							<a href="/">
+								<li>注册/登录</li>
+							</a>
+							<a href="/">
+								<li>会员认证</li>
+							</a>
+							<a href="/">
+								<li>找回密码</li>
+							</a>
+							<a href="/">
+								<li>账号管理</li>
+							</a>
+							<a href="/">
+								<li>会员权益</li>
+							</a>
+						</ul>
+						<ul>
+							<font>使用指南</font>
+							<a href="/">
+								<li>查找商家</li>
+							</a>
+							<a href="/">
+								<li>查找商品</li>
+							</a>
+							<a href="/">
+								<li>如何升级</li>
+							</a>
+							<a href="/">
+								<li>关于置顶</li>
+							</a>
+							<a href="/">
+								<li>关于商铺</li>
+							</a>
+						</ul>
+						<ul>
+							<font>售后/售前</font>
+							<a href="/">
+								<li>售前支持</li>
+							</a>
+							<a href="/">
+								<li>售后服务</li>
+							</a>
+							<a href="/">
+								<li>付款说明</li>
+							</a>
+						</ul>
+						<ul>
+							<font>违规说明</font>
+							<a href="/">
+								<li>违规范围</li>
+							</a>
+							<a href="/">
+								<li>处罚条例</li>
+							</a>
+							<a href="/">
+								<li>违规曝光</li>
+							</a>
+							<a href="/">
+								<li>免责声明</li>
+							</a>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="bt_right">
+						<ul>
+							<font>官方微信</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<ul>
+							<font>微信小程序</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--管理结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+			<div class="mbox">
+				<ul>
+					<a href="/">
+						<li>关于渠道精灵</li>
+					</a>
+					<a href="/">
+						<li>联系我们</li>
+					</a>
+					<a href="/">
+						<li>采购中心</li>
+					</a>
+					<a href="/">
+						<li>渠道通</li>
+					</a>
+					<a href="/">
+						<li>平台资讯</li>
+					</a>
+					<a href="/">
+						<li>常见问题</li>
+					</a>
+					<li>客服热线：400-8888-8888</li>
+					<div class="clear"></div>
+				</ul>
+				<p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+				<p>技术支持：诺商信息</p>
+				<p>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+				</p>
+			</div>
+		</div>
+
+		<!--footer结束-->
+		
+		<!--右侧定位开始-->
+		<div class="fixed">
+			<div style="float: left;" class="fixed_right">
+				<img src="__STATIC__/index/images/fixed_right.png"/>
+			</div>
+			<ul style="float: right;">
+				<div class="blank20"></div>
+				<li>
+					<img src="__STATIC__/index/images/login.png" width="20"/>
+					<p>登录</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/zhuce.png" width="20"/>
+					<p>注册</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/kefu.png" width="20"/>
+					<p>在线客服</p>
+				</li>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<p><img src="__STATIC__/index/images/bianji.png" width="20"/></p>
+				<p><img src="__STATIC__/index/images/saoma.png" width="20"/></p>
+				<a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/images/huiding.png" width="20"/></p></a>
+				<p id="guanbi"><img src="__STATIC__/index/images/guanbi.png" width="20"/></p>
+			</ul>
+			<div class="clear"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#guanbi").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				  $(".fixed_right").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				});
+			</script>
+            <script type="text/javascript">
+				$(document).ready(function(){
+				  $('#menu').mouseenter(function(){
+				  	$('.absolute').stop().slideDown(300);
+				  	$('.absolute').mouseenter(function(){
+					  $('.absolute').stop();
+					  
+					  });
+				  });
+				  $("#menu, .absolute").mouseleave(function() {
+					  	$('.absolute').stop().slideUp(250);
+					  });
+				});
+			</script>
+			<script>
+				var timeOut;
+				function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+				window.scrollBy(0,-50);
+				timeOut=setTimeout('scrollToTop()',10);
+				}
+				else clearTimeout(timeOut);
+				}
+			</script>
+		</div>
+		
+		
+		
+		<!--右侧定位结束-->
+	</body>
+
+</html>

@@ -1,0 +1,298 @@
+ {include file="public/headers" /}
+
+     {include file="public/storeheader" /}
+    <!--店铺banner-->
+    <!--商家简介内容页面-->
+	<div class="jianjie_neirong">
+    	    <!--营业执照弹出页面开始-->
+				<script>
+					$(function(){
+						$(".btm").click(function(){
+							$(".video").fadeIn()
+							$(".bg").fadeIn()
+						})
+						$(".close").click(function(){
+							$(".video").fadeOut()
+							$(".bg").fadeOut()
+						})
+					})
+    
+                </script>
+                    <div class="video">
+                        <div class="close">*</div>
+                        <img src="{$images}" class="yyzz_img"/><!--图片后期换，样式已经调好-->
+                    </div>
+                    <div class="bg"></div>
+			<!--营业执照弹出页结束面-->
+            
+            <!--查看位置弹出页面开始-->
+            <script>
+            $(function(){
+				$(".weizhi_btm").click(function(){
+					$(".weizhi_video").fadeIn()
+					$(".weizhi_bg").fadeIn()
+				})
+				$(".weizhi_close").click(function(){
+					$(".weizhi_video").fadeOut()
+					$(".weizhi_bg").fadeOut()
+				})
+			})
+
+            </script>
+            <div class="weizhi_video">
+                <div class="weizhi_close">*</div>
+                <img src="__STATIC__/index/images/ckwz.jpg" class="ckwz"/><!--图片后期换，样式已经调好-->
+            </div>
+            <div class="weizhi_bg"></div>
+			<!--查看位置弹出页结束面-->
+    	<div class="jianjie_neirong_con">      
+        	<div class="top"><p>{$buser.enterprisename}<span>【基本信息】</span></p></div>
+            <div class="p_two"><p>公司名称：{$buser.enterprisename}<br>公司地址:<span class="xiahuaxian" style="border-bottom:1px solid #d1d1d1;"> {$buser.address}</span>&nbsp;&nbsp;<a href="#"><img src="__STATIC__/index/images/biao.png" class="biao_one"></a>&nbsp;&nbsp;<img src="__STATIC__/index/images/chakangengduo.png" class="biao_two weizhi_btm"><br>入驻时间: {$buser.starttime}<br>联系电话: {$bstore.companyphone}<br>售后服务：{$bstore.salesphone}<br>技术服务：{$bstore.technologyphone}<br>联系人:{$bstore.contact}<p></div>
+            <img src="__STATIC__/index/images/jianjie_btn.png" class="jianjie_img btm">
+            <div class="top top_two"><p>{$buser.enterprisename}<span>【商家简介】</span></p></div>
+            <div class="p_two p_twow">{$bstore.content|html_entity_decode}</div>
+        </div>
+     </div>
+     <!--商家简介内容页面结束-->
+
+			<!--管理开始-->
+		<div class="guanli">
+			<div class="mbox">
+				<div class="guanli_top">
+					<ul>
+						<li>
+							<img src="__STATIC__/index/images/sheng.png" />
+							<div class="guanli_sheng">
+								<p>省钱实惠</p>
+								<font>50000+高性价比商品</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bao.png" />
+							<div class="guanli_sheng">
+								<p>售后保证</p>
+								<font>为您提供售后无忧保障</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/zhi.png" />
+							<div class="guanli_sheng">
+								<p>100%品质保障</p>
+								<font>全场正品,采购无忧</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bi.png" />
+							<div class="guanli_sheng">
+								<p>货比三家</p>
+								<font>比一比,价格更透明</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="guanli_bottom">
+					<div class="bt_left">
+						<ul>
+							<font>新手入门</font>
+							<a href="/">
+								<li>注册/登录</li>
+							</a>
+							<a href="/">
+								<li>会员认证</li>
+							</a>
+							<a href="/">
+								<li>找回密码</li>
+							</a>
+							<a href="/">
+								<li>账号管理</li>
+							</a>
+							<a href="/">
+								<li>会员权益</li>
+							</a>
+						</ul>
+						<ul>
+							<font>使用指南</font>
+							<a href="/">
+								<li>查找商家</li>
+							</a>
+							<a href="/">
+								<li>查找商品</li>
+							</a>
+							<a href="/">
+								<li>如何升级</li>
+							</a>
+							<a href="/">
+								<li>关于置顶</li>
+							</a>
+							<a href="/">
+								<li>关于商铺</li>
+							</a>
+						</ul>
+						<ul>
+							<font>售后/售前</font>
+							<a href="/">
+								<li>售前支持</li>
+							</a>
+							<a href="/">
+								<li>售后服务</li>
+							</a>
+							<a href="/">
+								<li>付款说明</li>
+							</a>
+						</ul>
+						<ul>
+							<font>违规说明</font>
+							<a href="/">
+								<li>违规范围</li>
+							</a>
+							<a href="/">
+								<li>处罚条例</li>
+							</a>
+							<a href="/">
+								<li>违规曝光</li>
+							</a>
+							<a href="/">
+								<li>免责声明</li>
+							</a>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="bt_right">
+						<ul>
+							<font>官方微信</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<ul>
+							<font>微信小程序</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+            
+            
+		</div>
+
+		<!--管理结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+			<div class="mbox">
+				<ul>
+					<a href="/">
+						<li>关于渠道精灵</li>
+					</a>
+					<a href="/">
+						<li>联系我们</li>
+					</a>
+					<a href="/">
+						<li>采购中心</li>
+					</a>
+					<a href="/">
+						<li>渠道通</li>
+					</a>
+					<a href="/">
+						<li>平台资讯</li>
+					</a>
+					<a href="/">
+						<li>常见问题</li>
+					</a>
+					<li>客服热线：400-8888-8888</li>
+					<div class="clear"></div>
+				</ul>
+				<p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+				<p>技术支持：诺商信息</p>
+				<p>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+				</p>
+			</div>
+		</div>
+
+		<!--footer结束-->
+		
+		<!--右侧定位开始-->
+		<div class="fixed">
+			<div style="float: left;" class="fixed_right">
+				<img src="__STATIC__/index/images/fixed_right.png"/>
+			</div>
+			<ul style="float: right;">
+				<div class="blank20"></div>
+				<li>
+					<img src="__STATIC__/index/images/login.png" width="20"/>
+					<p>登录</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/zhuce.png" width="20"/>
+					<p>注册</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/kefu.png" width="20"/>
+					<p>在线客服</p>
+				</li>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<p><img src="__STATIC__/index/images/bianji.png" width="20"/></p>
+				<p><img src="__STATIC__/index/images/saoma.png" width="20"/></p>
+				<a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/images/huiding.png" width="20"/></p></a>
+				<p id="guanbi"><img src="__STATIC__/index/images/guanbi.png" width="20"/></p>
+			</ul>
+			<div class="clear"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#guanbi").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				  $(".fixed_right").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				});
+			</script>
+            <script type="text/javascript">
+				$(document).ready(function(){
+				  $('#menu').mouseenter(function(){
+				  	$('.absolute').stop().slideDown(300);
+				  	$('.absolute').mouseenter(function(){
+					  $('.absolute').stop();
+					  
+					  });
+				  });
+				  $("#menu, .absolute").mouseleave(function() {
+					  	$('.absolute').stop().slideUp(250);
+					  });
+				});
+			</script>
+			<script>
+				var timeOut;
+				function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+				window.scrollBy(0,-50);
+				timeOut=setTimeout('scrollToTop()',10);
+				}
+				else clearTimeout(timeOut);
+				}
+			</script>
+		</div>
+		
+		
+		
+		<!--右侧定位结束-->
+	</body>
+
+</html>

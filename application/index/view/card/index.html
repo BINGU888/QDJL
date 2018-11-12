@@ -1,0 +1,197 @@
+{include file="public/headers" /}
+
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="__STATIC__/index/css/index.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/index/tpcj/dist/webuploader.css">
+		<link rel="stylesheet" type="text/css" href="__STATIC__/index/tpcj/examples/image-upload/style.css" />
+		<script type="text/javascript" src="__STATIC__/index/js/jquery-3.3.1.min.js"></script>
+		<script type="text/javascript" src="__STATIC__/index/tpcj/dist/webuploader.js"></script>
+		<link rel="stylesheet" type="text/css" href="__STATIC__/index/tpcj/css/webuploader.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="__STATIC__/webuploader/examples/imageupload/style.css" /> -->
+            <script type="text/javascript">
+        var InterValObj; //timer变量，控制时间
+        var count = 120; //间隔函数，1秒执行
+        var curCount;//当前剩余秒数
+ 
+        function sendMessage() {
+          　curCount = count;
+        　　//设置button效果，开始计时
+             $("#btnSendCode").attr("disabled", "true");
+             $("#btnSendCode").val(curCount + "s秒");
+             InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次
+        　　  //向后台发送处理数据
+         var url = "{:url('Merchant/send')}";
+    	 var phone = $('#phone').val(); 
+    	// alert(phone);
+
+    	var phone = {phone:phone};
+    	$.post(url,phone,function($data){
+    			alert($data.msg);
+    			     if ($data.wait == 3) {
+           				　curCount = 0;
+          			}
+    	}) 
+        }
+ 
+        //timer处理函数
+        function SetRemainTime() {
+            if (curCount == 0) {               
+                window.clearInterval(InterValObj);//停止计时器
+                $("#btnSendCode").removeAttr("disabled");//启用按钮
+                $("#btnSendCode").val("重新发送");
+            }
+            else {
+                curCount--;
+                $("#btnSendCode").val( curCount + "s秒");
+            }
+        }
+        </script>
+
+	</head>
+	<body>
+
+		
+		<!--注册中心开始-->
+		<div class="zhuce">
+			<div class="mbox">
+			<form action="{:url('Card/add')}" enctype="multipart/form-data" method="post"> 
+
+				<div class="zhuce_nei">
+					<div class="zhongxin">
+						<div class="blank30"></div>
+						<p class="title">渠道通发布</p>
+						<ul>
+							<li>
+								<font>*</font>
+								<span>公司名称：</span>
+								<input type="text" placeholder="请输入公司名称" name="company" value="{$res.company}" />
+								<div class="clear"></div>
+							</li>
+							<li>
+								<font>*</font>
+								<span>联系人：</span>
+								<input type="text" placeholder="请输入姓名" class="none" name="name" value="{$res.name}" />
+								<div class="clear"></div>
+							</li>
+							<li>
+								<font>*</font>
+								<span>联系电话：</span>
+								<input type="text" placeholder="请输入电话号" class="none" name="phone" value="{$res.phone}" />
+								<div class="clear"></div>
+							</li>
+							<li>
+								<font>*</font>
+								<span>公司QQ：</span>
+								<input type="text" placeholder="请输入公司QQ号" class="none" name="qq" value="{$res.qq}" />
+								<div class="clear"></div>
+							</li>
+	
+
+							<li class="relative">
+								<font>*</font>
+								<span>选择营业地区：</span>
+								<input type="text" class="none" disabled="disabled"/>
+								<div class="clear"></div>
+								<div class="position1">
+								
+									<select name="provinceid" id="provinceid" class="select">
+								<option value="{foreach $city as $vo}
+										{if condition="$vo.id == $res.provinceid"}{$vo.id}">
+									{$vo.name}{/if}{/foreach}</option>
+									{foreach $cateCity as $vo}
+										<option value="{$vo.id}">{$vo.name}</option>
+										{/foreach}
+									</select>
+
+									<select name="cityid" id="cityid">
+										<option value="{foreach $city as $vo}
+										{if condition="$vo.id == $res.cityid"}{$vo.id}">
+									{$vo.name}{/if}{/foreach}
+									</option>
+										
+									</select>
+									<select name="areaid" id="areaid">
+										<option value="{foreach $city as $vo}
+										{if condition="$vo.id == $res.areaid"}{$vo.id}">
+									{$vo.name}{/if}{/foreach}</option>
+									</select>
+									
+								</div>
+							</li>
+							<li>
+								<font>*</font>
+								<span>具体营业地址：</span>
+								<input type="text" class="none" name="address" value="{$res.content}" />
+								<div class="clear"></div>
+							</li>
+							<li>
+								<font>*</font>
+								<span>公司主营产品：</span>
+								<br/>
+								<textarea placeholder="请输入主营品牌及产品，便于商家搜索" name="content">{$res.content}</textarea>
+								<div class="clear"></div>
+							</li>
+						</ul>
+						<div class="xieyi">
+							<input type="checkbox" name="agree" value="1"/>
+							<font>同意<a href="/">《平台用户协议》</a></font>
+							<div class="clear"></div>
+						</div>
+						<div class="blank40"></div>
+						<button><input type="submit" class="submit" value="立即注册"/></button>
+
+						<div class="blank40"></div>
+					</div>
+					
+				</div>
+				</form>
+			</div>
+		</div>
+		<!--注册中心结束-->
+		
+{include file="public/footers" /}
+
+
+		<script>
+			//获取省级ID 并更新市级
+			$('#provinceid').change(function(){
+				//获取省级ID
+  			 var provinceid = $('#provinceid').val();
+				//发送ajax
+				var url = "{:url('Merchant/provinceid')}";
+    			var provinceid= {provinceid:provinceid};
+    			$.post(url,provinceid,function(data){
+    				var html = '<option value="">市</openid>';
+			        var len = data.length;
+			        for(var i = 0 ; i< len;i++){
+			            html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+			        }
+			        $('#cityid').html('').append(html);
+					})
+			});
+
+			//获取市级ID 并更新区
+			$('#cityid').change(function(){
+				//获取市级ID
+  			 var cityid = $('#cityid').val();
+				//发送ajax 更新区级
+				var url = "{:url('Merchant/cityid')}";
+    			var cityid= {cityid:cityid};
+    			$.post(url,cityid,function(data){
+    				var html = '<option value="">区</openid>';
+			        var len = data.length;
+			        for(var i = 0 ; i< len;i++){
+			            html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+			        }
+
+			        $('#areaid').html('').append(html);
+					})
+			});
+
+		</script>
+
+{include file="public/footers" /}

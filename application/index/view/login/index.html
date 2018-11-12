@@ -1,0 +1,28 @@
+{include file="public/headers" /}
+<!--登录页面开始-->	
+<div class="denglu">
+	<div class="DL_con">
+    	<div class="denglu_con">
+    	  <form action="{:url('Login/login')}" method="post">
+        	<h2>账号登录</h2>
+            <input class="zhanghao" type="text" value="" name="name" placeholder="用户名|手机号|邮箱"/>
+            <input class="mima" type="password" value="" name="password" placeholder="密码"/>
+            <div id="ewm">
+            	<input type="text" value="" name="captcha" placeholder="验证码"/>
+                <div id="yzm"><img style="width: 100px;height: 50px;" src="{:captcha_src()}" id="verify_img" alt="验证码" onclick="refreshVerify()"></div>
+                <p>看不清？<a href="javascript:refreshVerify()">换一张</a></p>
+                
+            </div>
+          
+            <input class="tj" type="submit" value="提交"/>
+            </form>
+            <h3>还没有账号？<a href="{:url('Registered/index')}">立即注册!</a></h3>
+            <h5><a href="{:url('Retrievepassword/index')}">忘记密码？</a></h5>
+        </div>
+        <div class="clear"></div>
+	</div>
+
+
+</div>
+
+{include file="public/footers" /}

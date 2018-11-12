@@ -1,0 +1,177 @@
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/jquery.SuperSlide.2.1.1.js"></script>
+<style type="text/css">
+	
+	
+
+	#nav {
+		position: relative;
+		z-index: 1;
+		width: 250px;
+		background: #F1F1F1;
+	}
+	
+	#nav .mainCate {
+		position: relative;
+		padding: 10px 20px;
+		zoom: 1;
+	}
+	
+	#nav .evenLeval {
+		background: #fff;
+	}
+	
+	#nav h3 {
+		height: 28px;
+		line-height: 28px;
+		font-size: 16px;
+		overflow: hidden;
+	}
+	
+	#nav h3 span {
+		width: 18px;
+		height: 15px;
+		line-height: 32px;
+		font-weight: 200;
+		font-size: 12px;
+		float: right;
+	}
+	
+	#nav p {
+		height: 20px;
+		line-height: 20px;
+	}
+	
+	#nav p a {
+		margin-right: 10px;
+		color: #666;
+	}
+	
+	#nav .subCate {
+		display: none;
+		background: url(images/nav_div_bg.jpg) 0 0 repeat-y #fff;
+		position: absolute;
+		left: 250px;
+		top: 0;
+		width: 750px;
+		padding: 0 0 20px 20px;
+		color: #333;
+	}
+	
+	#nav .subCate h4 {
+		height: 26px;
+		line-height: 26px;
+		margin: 0 0 10px 0;
+		border-bottom: 1px solid #ccc;
+		font-size: 16px;
+		color: #333;
+	}
+	
+	#nav .subCate ul {
+		width: 230px;
+		;
+		float: left;
+		overflow: hidden;
+		padding-top: 20px;
+	}
+	
+	#nav .subCate li {
+		width: 230px;
+		float: left;
+		display: inline;
+	}
+	
+	#nav .subCate li a {
+		display: block;
+		float: left;
+		padding: 0 5px;
+		line-height: 25px;
+		color: #666;
+		word-break: keep-all;
+		white-space: nowrap;
+	}
+	
+	#nav .subCate #sub-ul-1 {
+		width: 100%;
+		;
+	}
+	
+	#nav .on {
+		background: #88766E;
+		color: #fff;
+	}
+	
+	#nav .on h3 a,
+	#nav .on p a {
+		color: #fff;
+	}
+	
+	#nav .on .subCate {
+		display: block !important;
+	}
+	
+	#mainCate-4 .subCate {
+		top: -100px
+	}
+	
+	#mainCate-5 .subCate {
+		top: -164px;
+	}
+	
+	#mainCate-6 .subCate {
+		top: auto;
+		bottom: 0;
+	}
+</style>
+<div class="banner">
+	<ul id="nav">
+		<li id="mainCate-1" class="mainCate">
+			<h3><span>&gt;</span><a href="#">白酒</a></h3>
+			<div class="subCate">
+				sfdsfdsf
+			</div>
+		</li>
+		<li id="mainCate-2" class="mainCate evenLeval">
+			<h3><span>&gt;</span><a href="#">葡萄酒</a></h3>
+			<div class="subCate">
+				adsasdsa
+			</div>
+		</li>
+		<li id="mainCate-3" class="mainCate">
+			<h3><span>&gt;</span><a href="#">洋酒</a></h3>
+			<div class="subCate">
+				sadasdasd
+			</div>
+		</li>
+		<li id="mainCate-4" class="mainCate evenLeval">
+			<h3><span>&gt;</span><a href="#">啤酒</a></h3>
+			<div class="subCate" style="display: none;border: 1px solid #000;">
+				asdasdsa
+			</div>
+		</li>
+		<li id="mainCate-5" class="mainCate">
+			<h3><span>&gt;</span><a href="#">保健酒/</a><a href="#">黄酒</a></h3>
+			<div class="subCate" style="display: none;border: 1px solid #000;">
+				adasdasd
+			</div>
+		</li>
+		<li id="mainCate-6" class="mainCate evenLeval">
+			<h3><span>&gt;</span><a href="#">酒具</a></h3>
+			
+			<div class="subCate" style="display: none;border: 1px solid #000;">
+				asdas
+			</div>
+		</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	jQuery("#nav").slide({
+		type: "menu",
+		titCell: ".mainCate",
+		targetCell: ".subCate",
+		delayTime: 0,
+		triggerTime: 0,
+		defaultPlay: false,
+		returnDefault: true
+	});
+</script>

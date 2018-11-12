@@ -1,0 +1,106 @@
+{extend name="public/base" /}
+{block name="main"}
+<div class="page-container">
+    <form class="form form-horizontal" id="form-article-add">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" value="{$res.name}" disabled="disabled" placeholder="" id="" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">邮箱：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.email}" placeholder="" id="" name="">
+            </div>
+        </div>
+                <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">手机号：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.phone}" placeholder="" id="" name="">
+            </div>
+        </div>
+                <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">联系人：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.contactname}" placeholder="" id="" name="">
+            </div>
+        </div>
+                <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">联系人电话：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.contactphone}" placeholder="" id="" name="">
+            </div>
+        </div>
+                <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">联系人QQ：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.contactqq}" placeholder="" id="" name="">
+            </div>
+        </div>
+                <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">企业注册名称：</label>
+            <div class="formControls col-xs-4 col-sm-3">
+                <input type="text" class="input-text" disabled="disabled" value="{$res.enterprisename}" placeholder="" id="" name="">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>地址：</label>
+            <div class="formControls col-xs-4 col-sm-2">
+                <span class="select-box">
+                <select name="" class="select">
+                    <option value="0">{$province.name}</option>
+                </select>
+                </span>
+            </div>
+             <div class="formControls col-xs-4 col-sm-2">
+                <span class="select-box">
+                <select name="" class="select">
+                    <option value="0">{$city.name}</option>
+                </select>
+                </span>
+            </div>
+            <div class="formControls col-xs-4 col-sm-2">
+                <span class="select-box">
+                <select name="" class="select">
+                    <option value="0">{$area.name}</option>
+                </select>
+                </span>
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">营业执照：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+              {volist name="$image" id="vo"}
+              <img style="width: 200px; height: 300px;" src="{$vo}">
+              {/volist}
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">具体营业地址：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$res.address}" placeholder="" id="" name="">
+            </div>
+        </div>
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2">公司主营产品：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <textarea name="" cols="" rows="" class="textarea" placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onkeyup="$.Huitextarealength(this,200)">{$res.content}</textarea>
+                <p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+            </div>
+        </div>
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+        <a href="{:url('Messagestatus/adopt',['id'=>$res.id])}"><button type="button" class="btn btn-primary">通过</button></a>
+&nbsp;
+<a href="{:url('Messagestatus/notadopt',['id'=>$res.id])}"><button type="button" class="btn btn-danger">不通过</button></a>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+ {/block}

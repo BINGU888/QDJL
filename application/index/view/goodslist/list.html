@@ -1,0 +1,194 @@
+{include file="public/headers" /}
+		<!--列表2页面开始-->	
+		
+		<div class="list2">
+			<div class="mbox">
+				<div class="catpos">
+					<p>{$brandname->brandname}品牌</p>
+					<div class="clear"></div>
+				</div>
+				<div class="svip">
+					<ul>
+						{volist name="svip" id="vo"}
+						<li>
+							<div class="svip_l">SVIP</div>
+							<div class="svip_r">
+								<p class="svip_tit">{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+									<a href="{:url('Store/index',['id'=>$res.id])}">{$res.enterprisename}
+									</a>{/if}
+								{/volist}</p>
+								<p class="svip_men">{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+									<a href="{:url('Store/index',['id'=>$res.id])}"> {$res.contactname}</a>
+									{/if}
+								{/volist}：<font>
+									
+									{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+									{$res.phone}
+									{/if}
+								{/volist}
+
+								</font></p>
+								<a href="http://shang.qq.com/email/stop/email_stop.html?qq=
+								{volist name="buser" id="res"}
+								{if condition="$vo.uid == $res.id"}
+									{$res.contactqq}
+									{/if}
+									{/volist}&sig=1443a8cf2b571e23b291ce3dfca18c9c6e1c61e857743e66&tttt=1jh"><div class="btn1">
+									<img src="__STATIC__/index/images/qq.png"/>
+									在线咨询
+								</div></a>
+								<img src="__STATIC__/index/images/line.png"/>
+								<a href="/"><div class="btn2">
+									<img src="__STATIC__/index/images/wx.png" width="16"/>
+									关注微信
+								</div></a>
+								<span class="clear"></span>
+							</div>
+							<div class="clear"></div>
+						</li>
+						{/volist}
+						
+						{volist name="$vip" id ="vo"}
+						<li class="VIP1">
+							<div class="vip_l">VIP</div>
+							<div class="svip_r">
+								<p class="svip_tit">{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+
+									<a href="{:url('Store/index',['id'=>$res.id])}">{$res.enterprisename}{/if}</a>
+								{/volist}</p>
+								<p class="svip_men">{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+									<a href="{:url('Store/index',['id'=>$res.id])}">{$res.contactname}</a>
+									{/if}
+								{/volist}：<font>{volist name="buser" id="res"}
+									{if condition="$vo.uid == $res.id"}
+									{$res.phone}
+									{/if}
+								{/volist}</font></p>
+<a href="http://shang.qq.com/email/stop/email_stop.html?qq=
+								{volist name="buser" id="res"}
+								{if condition="$vo.uid == $res.id"}
+									{$res.contactqq}
+									{/if}
+									{/volist}&sig=1443a8cf2b571e23b291ce3dfca18c9c6e1c61e857743e66&tttt=1jh"><div class="btn1">
+									<img src="__STATIC__/index/images/qq.png"/>
+									在线咨询
+								</div></a>
+								<img src="__STATIC__/index/images/line.png"/>
+								<a href="/"><div class="btn2">
+									<img src="__STATIC__/index/images/wx.png" width="16"/>
+									关注微信
+								</div></a>
+								<span class="clear"></span>
+							</div>
+							<div class="clear"></div>
+						</li>
+						{/volist}
+						<div class="clear"></div>
+					</ul>
+				</div>
+				{volist name="$buserres" id ="vo"}
+				<a href="{:url('Store/index',['id'=>$res.id])}">{$vo.enterprisename}</a>
+				{/volist}
+				<div class="list2_option">
+					<div class="list2_option_up">
+						<p>品牌：</p>
+						<ul>
+							{volist name="brand" id="vo"}
+							<a href="{:url('Goodslist/list',['brandid'=>$vo.id])}"><li>{$vo.brandname}</li></a>
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="list2_option_down">
+						<p>价格：</p>
+						<ul>
+							<a href="{:url('Goodslist/list',['small'=>1,'big'=>3000,'brandid'=>$brandname->id])}"><li>3000元以下</li></a>
+							<a href="{:url('Goodslist/list',['small'=>3000,'big'=>4000,'brandid'=>$brandname->id])}"><li>3000-4000元</li></a>
+							<a href="{:url('Goodslist/list',['small'=>4000,'big'=>5000,'brandid'=>$brandname->id])}"><li>4000-5000元</li></a>
+							<a href="{:url('Goodslist/list',['small'=>5000,'big'=>6000,'brandid'=>$brandname->id])}"><li>5000-6000元</li></a>
+							<a href="{:url('Goodslist/list',['small'=>6000,'big'=>7000,'brandid'=>$brandname->id])}"><li>6000-7000元</li></a>
+							<form action="{:url('Goodslist/list')}" method="post">
+							<li class="chaxun">
+								<input name="small" value="" type="text"/>-
+								<input name="big" value="" type="text"/>
+								<input type="hidden" name="brandid" value="{$brandname->id}"/>
+								<!-- <input type="button" value="确定" "/> -->
+								<button class="chaxun_button">确定</button>
+							</li>
+							</form>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="list2_option_img">
+						<img src="__STATIC__/index/images/xiala.jpg"/>
+					</div>
+				</div>
+				<div class="list2_order">
+					<ul>
+						<li class="list2_select">综合</li>
+						<li>年份</li>
+						<li>人气</li>
+						<li>价格</li>
+						<div class="clear"></div>
+					</ul>
+					<div class="list2_order_page">
+						<!-- <span class="list2_order_page_select">1</span> -->
+						{volist name="num" id="vo"}
+						<a href="{:url('Goodslist/list',['pages'=>$vo,'brandid'=>$brandname->id])}"><span
+							{if condition="$vo==$pages"}class="list2_order_page_select"{/if}
+
+							>{$vo}</span></a>
+						{/volist}
+						<a href="{:url('Goodslist/list',['pages'=>$pages+1,'brandid'=>$brandname->id])}"><span>下一页</span></a>
+					</div>
+				</div>
+				<div class="list2_pro">
+					<ul>
+
+						{volist name="dates" id="vo"}
+						<li>
+							<a href="{:url('Goodsdetails/index',['goodsid'=>$vo.id])}">
+							<img style="width: 200px;height: 200px;" src="{$vo.image}">
+							<p class="red">￥{$vo.price}</p>
+							<p class="title">{$vo.goods_name}</p>
+							<p class="dp_name"><img src="__STATIC__/index/images/dianpu.png"><span>{volist name="busers" id="bis"}
+								{if condition="$bis.id == $vo.uid"}{$bis.enterprisename}{/if}
+							{/volist}</span></p>
+							<p class="dp_age">
+								<img src="__STATIC__/index/images/money.jpg">
+								<img src="__STATIC__/index/images/chengxin.jpg">
+								<span>1年</span>
+								</p><div class="clear"></div>
+							<p></p>
+							</a>
+						</li>
+						{/volist}
+
+
+						
+						<div class="clear"></div>
+					</ul>
+					<div class="pages">
+							<a href="{:url('Goodslist/list',['pages'=>$pages-1,'brandid'=>$brandname->id])}"><span>上一页</span></a>
+							
+							{volist name="num" id="vo"}
+							<a href="{:url('Goodslist/list',['pages'=>$vo,'brandid'=>$brandname->id])}"><span
+							{if condition="$vo==$pages"}class="selecte"{/if}>{$vo}</span></a>
+							{/volist}
+							<a href="{:url('Goodslist/list',['pages'=>$pages+1,'brandid'=>$brandname->id])}"><span>下一页</span></a>
+						</div>
+
+				</div>
+			</div>
+		</div>
+		<!--列表2页面结束-->
+
+	
+
+		{include file="public/footers" /}

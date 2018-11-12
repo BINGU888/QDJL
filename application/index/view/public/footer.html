@@ -1,0 +1,401 @@
+    
+        <!--新闻资讯开始-->
+        <div class="news">
+            <div class="mbox">
+                <div class="news_catname">
+                    <p>新闻热点</p>
+                    <p class="more">更多>></p>
+                    <div class="clear"></div>
+                </div>
+                <div class="news_con">
+                    <div class="news_con_left">
+                        <img src="__STATIC__/index/images/news1.jpg"/>
+                    </div>
+                    <div class="news_con_right">
+                        {volist name="redian" id="vo"}
+                        <ul>
+                            <div class="num1">
+                                <img width="100px;" src="{$vo.image}"/>
+                            </div>
+                            <li>{$vo.title}</li>
+                        </ul>
+                    {/volist}
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+        <!--新闻资讯结束-->
+        
+        <!--招募和VIP开始-->
+        <div class="zhaomu_VIP">
+            <div class="mbox">
+                <div class="zhaomu">
+                    <img src="__STATIC__/index/images/zhaomu.jpg"/>
+                </div>
+                <div class="VIP">
+                    <img src="__STATIC__/index/images/VIP.jpg"/>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--招募和VIP结束-->
+        
+        
+        
+        
+        
+        
+        <!--管理开始-->
+        <div class="guanli">
+            <div class="mbox">
+                <div class="guanli_top">
+                    <ul>
+                        <li>
+                            <img src="__STATIC__/index/images/sheng.png" />
+                            <div class="guanli_sheng">
+                                <p>省钱实惠</p>
+                                <font>50000+高性价比商品</font>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <img src="__STATIC__/index/images/bao.png" />
+                            <div class="guanli_sheng">
+                                <p>售后保证</p>
+                                <font>为您提供售后无忧保障</font>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <img src="__STATIC__/index/images/zhi.png" />
+                            <div class="guanli_sheng">
+                                <p>100%品质保障</p>
+                                <font>全场正品,采购无忧</font>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <img src="__STATIC__/index/images/bi.png" />
+                            <div class="guanli_sheng">
+                                <p>货比三家</p>
+                                <font>比一比,价格更透明</font>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                        <div class="clear"></div>
+                    </ul>
+                </div>
+                <div class="guanli_bottom">
+                    <div class="bt_left">
+                        <ul>
+                            <font>新手入门</font>
+                            <a href="{:url('login/index')}"><li>注册/登录</li></a>
+
+                            <a href="{:url('personal/index')}"><li>商家认证</li></a>
+
+                            <a href="{:url('Retrievepassword/index')}"><li>找回密码</li></a>
+
+                            <a href="{:url('personal/index')}"><li>账号管理</li></a>
+
+                            <!--<a href="/">-->
+                            <!--<li>会员权益</li>-->
+                            <!--</a>-->
+                        </ul>
+                        <ul>
+                            <font>使用指南</font>
+                            <a href="{:url('card/library')}">
+                                <li>查找商家</li>
+                            </a>
+                            <a href="{:url('index/index')}">
+                                <li>查找商品</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>2])}">
+                                <li>如何升级</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>3])}">
+                                <li>关于置顶</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>4])}">
+                                <li>关于商铺</li>
+                            </a>
+                        </ul>
+                        <ul>
+                            <font>售后/售前</font>
+                            <a href="{:url('information/show',['id'=>5])}">
+                                <li>售前支持</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>6])}">
+                                <li>售后服务</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>7])}">
+                                <li>付款说明</li>
+                            </a>
+                        </ul>
+                        <ul>
+                            <font>违规说明</font>
+                            <a href="{:url('information/show',['id'=>8])}">
+                                <li>违规范围</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>9])}">
+                                <li>处罚条例</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>10])}">
+                                <li>违规曝光</li>
+                            </a>
+                            <a href="{:url('information/show',['id'=>11])}">
+                                <li>免责声明</li>
+                            </a>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="bt_right">
+                        <ul>
+                            <font>官方微信</font>
+                            <li>
+                                <img src="__STATIC__/index/images/weixin.jpg" />
+                            </li>
+                        </ul>
+                        <ul>
+                            <font>微信小程序</font>
+                            <li>
+                                <img src="__STATIC__/index/images/weixin.jpg" />
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <!--管理结束-->
+
+        <!--footer开始-->
+        <div class="footer">
+            <div class="mbox">
+                <ul>
+                    <a href="/">
+                        <li>关于渠道精灵</li>
+                    </a>
+                    <a href="/">
+                        <li>联系我们</li>
+                    </a>
+                    <a href="/">
+                        <li>采购中心</li>
+                    </a>
+                    <a href="/">
+                        <li>渠道通</li>
+                    </a>
+                    <a href="/">
+                        <li>平台资讯</li>
+                    </a>
+                    <a href="/">
+                        <li>常见问题</li>
+                    </a>
+                    <li>客服热线：400-8888-8888</li>
+                    <div class="clear"></div>
+                </ul>
+                <p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+                <p>技术支持：诺商信息</p>
+                <p>
+                    <a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+                    <a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+                    <a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+                    <a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+                </p>
+            </div>
+        </div>
+
+        <!--footer结束-->
+        
+        <!--右侧定位开始-->
+        <div class="fixed">
+            <div style="float: left;" class="fixed_right">
+                <img src="__STATIC__/index/images/fixed_right.png"/>
+            </div>
+            <ul style="float: right;">
+                <div class="blank20"></div>
+                {if condition="$Think.session.id eq ''"}
+                <li>
+                    <a href="{:url('login/index')}"><img src="__STATIC__/index/images/login.png" width="20"/></a>
+                    <p>登录</p>
+
+                </li>
+                <li>
+                    <a href="{:url('Registered/index')}"><img src="__STATIC__/index/images/zhuce.png" width="20"/></a>
+                    <p>注册</p>
+                </li>
+
+                {/if}
+                <li>
+                    <img src="__STATIC__/index/images/kefu.png" width="20"/>
+                    <p>在线客服</p>
+                </li>
+                {if condition="$Think.session.id neq ''"}
+                    <li>
+                        <a href="{:url('Personal/index')}"> <img src="__STATIC__/index/images/login.png" width="20"/></a>
+                    <p>个人中心</p>
+                </li>
+                {/if}
+
+                <div class="blank50"></div>
+                <div class="blank50"></div>
+                <div class="blank50"></div>
+                <div class="blank50"></div>
+                <div class="blank50"></div>
+                <p><img src="__STATIC__/index/images/bianji.png" width="20"/></p>
+                <p><img src="__STATIC__/index/images/saoma.png" width="20"/></p>
+                <a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/images/huiding.png" width="20"/></p></a>
+                <p id="guanbi"><img src="__STATIC__/index/images/guanbi.png" width="20"/></p>
+            </ul>
+            <div class="clear"></div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                  $("#guanbi").click(function(){
+                  $('.fixed ul').animate({width:'toggle'},350);
+                  });
+                  $(".fixed_right").click(function(){
+                  $('.fixed ul').animate({width:'toggle'},350);
+                  });
+                });
+            </script>
+            <script>
+                var timeOut;
+                function scrollToTop() {
+                if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+                window.scrollBy(0,-50);
+                timeOut=setTimeout('scrollToTop()',10);
+                }
+                else clearTimeout(timeOut);
+                }
+            </script>
+            <script type="text/javascript">
+                $('#hove li').mouseenter(function(){
+                    $('#hoveimage li').empty();
+                var pid = $(this).val();
+                    var pidd = $(this).val();
+                // alert(pid);
+                var url = "{:url('Index/hoveimage')}";
+                var pid={pid:pid};
+                $.post(url,pid,function(data){
+                     // var len = data.length;  
+                     // alert(len);
+                      var html = '<li>品牌推荐</li>';
+                 var len = data.length;
+                
+                    for(var i = 0 ; i<len;i++){
+                        
+                        html = html+'<a href ="index/goodslist/list/brandid/'+data[i].id+'"><li value="'+data[i].id+'"><img style=width:150px;height:50px;";" src='+data[i].image+'></li></a>';
+                        // html = html + '<a href =""><li value="'+ data[i].id +'">'+ data[i].enterprisename +'</li></a>';
+
+                }
+                    // alert(pidd);
+                    // $('.biaozhi').html('');
+                      $('#hoveimage-'+pidd).find('li').html('').append(html);
+
+                    // alert(pid);
+                });
+                });
+            </script>
+
+                <script type="text/javascript">
+                $('#hove li').mouseenter(function(){
+                var pid = $(this).val();
+                // alert(pid);
+                var pidd = $(this).val();
+                var url = "{:url('Index/threetree')}";
+                var pid={pid:pid};
+                $.post(url,pid,function(data){
+                     // var len = data.length;  
+                     // alert(len);
+                      var html = '<li>品牌推荐</li>';
+                 var len = data.length;
+                
+                    for(var i = 0 ; i<len;i++){
+                        var id = data[i].id;
+                        html = html + '<a href ="index/Store/index/id/'+data[i].id+'"><li value="'+ data[i].id +'">'+ data[i].enterprisename +'</li></a>';
+
+                }
+                    $('.blank10').html('');
+                      $('#company-'+pidd).find('li').html('').append(html);
+                    // alert(pid);
+                });
+                });
+            </script>
+
+
+                <script type="text/javascript">
+                    //鼠标移入触发事件
+                $('#hove li').mouseenter(function(){
+
+                    $('#goodsdata').empty();
+                    // pid 当前二级分类id
+                 var pid = $(this).attr("value");
+                 var pidd = $(this).attr("value");
+                //url ajax查询二级分类下的数据
+                var url = "{:url('Index/goodsdata')}";
+                var pid={pid:pid};
+                $.post(url,pid,function(data){
+                 var len = 4;
+
+                    html ='';
+                    //循环 遍历商品数据
+                    for(var i = 0 ; i<len;i++){
+
+                    var html = html+'<div class="pro1">'+'<a href ="index/Goodsdetails/index/goodsid/'+data[i].id+'"><img style="width:210px;" src='+data[i].image+'></a> <p>'+data[i].goods_name+'</p>'+'<font>¥'+data[i].price+'</font></div>';
+                        //解决移入bug .html() 当鼠标移入进来把之前的数据清空
+        // alert(pidd);
+                        $('.product').html('');
+                        $('#goodsdata-'+pidd).html('').append(html);
+
+                    }
+
+                });
+
+                });
+            </script>
+<script>
+    //打开网站时触发改事件
+    $(document).ready(function () {
+        var url = "{:url('Index/onetree')}";
+
+        $.post(url,{},function(data) {
+            var len = data.length;
+            for(var i = 0 ; i<len;i++){
+        //mouseenter 鼠标移入事件 触发遍历数据的每个li的第一个，且业务需求 打开网站时 默认第一个li商品数据商家数据等。
+            $('#default-'+data[i].id).find('li').eq('0').trigger('mouseenter');
+            }
+        });
+
+    });
+</script>
+
+        </div>
+        
+        
+        
+        <!--右侧定位结束-->
+    </body>
+
+</html>

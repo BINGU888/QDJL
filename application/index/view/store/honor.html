@@ -1,0 +1,54 @@
+{include file="public/headers" /}
+
+{include file="public/storeheader" /}
+<!--店铺内容页面-->
+<style>
+    /*分页*/
+    .pagination {}
+    .pagination li {display: inline-block;margin-right: -1px;padding: 8px;border: 1px solid #e2e2e2;min-width: 50px;text-align: center;}
+    .pagination li.active {background: #009688;color: #fff;border: 1px solid #009688;}
+    .pagination li a {display: block;text-align: center;}
+</style>
+<div class="cp_neirong">
+    <div class="cp_neirong_con">
+        <div class="cp_pro">
+            <div class="cx_title">
+                <img src="__STATIC__/index/images/miaosha.jpg"/>
+                <h1>荣誉资质</h1>
+                <div class="clear"></div>
+            </div>
+            <div class="pro_title">
+
+
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="pro_content">
+                <ul>
+                    {volist name="res" id="vo"}
+                   <a href="{:url('Store/honorshow',['bid'=>$buser.id,'id'=>$vo.id])}"><li>
+                        <div class="cx_pro">
+                            <img src="{$vo.image}"/>
+                            <h2><span>{$vo.starttime|date="Y-m-d H:i",###}</span></h2>
+                            <p>{$vo.title}</p>
+                        </div>
+                    </li>
+                    </a>
+                    {/volist}
+
+                    <div class="clear"></div>
+
+                </ul>
+
+            </div>
+            {if condition="($res neq null )"}
+            <li>{$res->render()}</li>
+            {/if}
+        </div>
+
+    </div>
+</div>
+
+<!--店铺内容页面-->
+<!--店铺页面结束-->
+{include file="public/footers" /}

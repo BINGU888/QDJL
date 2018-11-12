@@ -1,0 +1,36 @@
+{include file="public/headers" /}
+</head>
+<body>
+
+<div style="width:850px;text-align: center;margin: auto; >
+<span id="content">
+                    <h2>{$res->title}</h2>
+                        <span style="font-size:17px">{$res->starttime|date="Y-m-d H:i",###}</span>
+       <p style="font-size:18px">{$res->content|html_entity_decode}</p>
+   </span>
+</div>
+<script type="text/javascript">
+    //获取button按钮
+    var btn=document.getElementById('btn');
+    //获取p
+    var content=document.getElementById('content');
+    //获取p中的内容
+    var str=content.innerHTML;
+    //定义一个变量，表示当前的状态（收缩、展开）
+    var onOff=true;// true表示展开
+    btn.onclick=function(){
+        if(onOff) {
+            content.innerHTML = str.substr(0,50)+"......";
+            btn.innerHTML='>>>展开'
+        } else {
+            //说明当前状态是收缩的，需要展开
+            content.innerHTML = str
+            btn.innerHTML = '<<<收缩';
+        }
+        onOff=!onOff; //每点击一次，改变一次展开、收缩状态
+        return false;  //阻止a标签的默认事件
+    }
+</script>
+</body>
+
+{include file="public/footers" /}

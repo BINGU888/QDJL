@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="__STATIC__/index/css/pages.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/pagess.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/pagesss.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/page_1.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/pagessss.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/indexssss.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<script type="text/javascript" src="__STATIC__/index/js/jquery.min.js"></script>
+		<script src="__STATIC__/index/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script type="text/javascript" src="__STATIC__/index/js/jquery.min.js"></script>
+		<script src="__STATIC__/index/js/jquery.SuperSlide.2.1.1.js"></script>
+		<script src="__STATIC__/index/js/common.js"></script>
+
+			
+	</head>
+
+	<body>
+		<!--头部开始-->
+		<div class="header">
+			<div class="mbox relative">
+				<div class="header_left">
+					<img src="__STATIC__/index/images/weizhi.png" />
+					<p>地址定位：山东省-济南市</p>
+					<div class="clear"></div>
+					<div class="header_posi">
+						<ul>
+							<li>北京</li>
+							<li>上海</li>
+							<li>山东</li>
+							<li>山西</li>
+							<li>河北</li>
+							<li>河南</li>
+							<li>湖北</li>
+							<li>湖南</li>
+						</ul>
+					</div>
+				</div>
+				<div class="header_right">
+					<a href="{:url('Login/index')}"><span>请登录</span></a>
+					<ul>
+						<font>
+							<a href="{:url('Registered/index')}"><li>免费注册</li></a>
+						</font>
+						<li>会员中心</li>
+						<li>商户服务</li>
+						<div class="clear"></div>
+					</ul>
+					<span><font>服务热线：400-8888-8888</font></span>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--头部结束-->
+
+		<!--广告开始-->
+		<div class="gg"></div>
+		<!--广告结束-->
+
+		<!--logo开始-->
+		<div class="logo">
+			<div class="mbox">
+				<div class="logo_left">
+					<img src="__STATIC__/index/images/logo.jpg" />
+				</div>
+				<div class="logo_center">
+					<img src="__STATIC__/index/images/yu.jpg" />
+					<div class="weizhi">
+						<img src="__STATIC__/index/images/weizhi.png" />
+						<span>定位:</span>
+						山东省-济南市
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="logo_right">
+					<div class="input">
+						<form action="{:url('Goodslist/index')}" method="post">
+						<input type="text" class="input1" placeholder="请输入搜索内容" name="goods_name" value="" />
+						<!-- <input  value="搜索" class="input2" /> -->
+						<button class="input2">搜索</button>
+						</form>
+						<div class="clear"></div>
+					</div>
+					<ul>
+						<li>整机电数</li>
+						<li>DIY散热件</li>
+						<li>周边配件</li>
+						<li>手机通讯</li>
+						<li>数码存储</li>
+						<li>办公设备</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!--logo结束-->
+
+		<!--nav开始-->
+		<div class="nav_ny">
+			<div class="mbox">
+				<div class="menu" id="menu">
+					<img src="__STATIC__/index/images/menu.png" />
+					<p>全部商品分类</p>
+					<div class="clear"></div>
+
+				</div>
+				<ul>
+					<a href="{:url('Index/index')}"><li>首页</li></a>
+					<li>采购中心</li>
+					<a href="{:url('card/library')}"><li class="selected">渠道通</li></a>
+					<a href="{:url('information/index')}"><li>平台资讯</li></a>
+					<a href="{:url('problem/index')}"><li>常见问题</li></a>
+					<div class="clear"></div>
+				</ul>
+				<div class="gongyingshang"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--nav结束-->
+		<div class="banner">
+			<div class="mbox relative">
+				      <div class="absolute">
+					<ul id="nav">
+						{foreach $cateRes as $onetree}
+						<li id="mainCate-1" class="mainCate">
+							<img src="__STATIC__/index/images/diannao.png" width="20"/>
+
+							<p>{$onetree.name}</p>
+							<div class="clear"></div>
+							<div class="subCate">
+								{foreach $onetree.child as $towtree}
+								<div class="erji">
+									<p>{$towtree.name}</p>
+
+									<div class="leixing">
+										{foreach $towtree.child as $threetree}
+										<a href="{:url('goodslist/index',['pid'=>$threetree.id])}"><span>{$threetree.name}</span></a>
+										{/foreach}
+									</div>
+
+									<div class="clear"></div>
+								</div>
+								{/foreach}
+
+							</div>
+						</li>
+						{/foreach}
+					</ul>
+				</div>
+			</div>
+
+
+		<script id="jsID" type="text/javascript">
+		jQuery(".slideBox").slide( { mainCell:".bd ul",autoPlay:true });
+		</script>
+		</div>
+
+
+		<script type="text/javascript">
+			jQuery("#nav").slide({
+				type: "menu",
+				titCell: ".mainCate",
+				targetCell: ".subCate",
+				delayTime: 0,
+				triggerTime: 0,
+				defaultPlay: false,
+				returnDefault: true
+			});
+
+		</script>
+        
+		<!--banner结束-->
+

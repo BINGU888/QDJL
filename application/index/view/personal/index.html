@@ -1,0 +1,193 @@
+{include file="public/headers" /}
+
+<!--订单页面开始-->
+<script>
+    $(function(){
+        $(".con").eq(0).hide();  //有的页面在开始的时候其中一个是展开的，这个作用是让第一个con显示，eq是获取第几个元素，从0开始计数
+        //$(".con").first().show();  跟上面的意义是一样的，获取第一个元素，获取最后一个是list
+        $(".orderL_nav .yy").click(function(){
+            $(this).next().slideToggle().siblings(".con").slideUp();//点击后，点击第一个展开，点击第二个展开后第二个会合起来
+            //获取当前元素 下一个  展开关闭       获取同辈元素（一样的） 收起
+        })
+    })
+</script>
+
+<div class="orders">
+    {include file="public/plist" /}
+    <div class="order_right">
+        <div class="orderR_Top">
+            <ul>
+                <li><a {if condition="$ars == 0"} class="gl "{/if}href="{:url('Personal/index')}">所有订单</a></li>
+                <li><a {if condition="$ars == 1"} class="gl "{/if}href="{:url('Personal/index',['pay'=>'0'])
+                }">待付款</a></li>
+                <li><a {if condition="$ars == 2"} class="gl "{/if} href="{:url('Personal/index',['status'=>'0'])
+                }">待发货</a></li>
+                <li><a {if condition="$ars == 3"} class="gl "{/if} href="{:url('Personal/index',['status'=>'1'])
+                }">待收货</a></li>
+                <li><a {if condition="$ars == 4"} class="gl "{/if} href="{:url('Personal/index',['status'=>'2'])}">已完成</a></li>
+            </ul>
+            <div class="delete">
+                <!--<p><img src="__STATIC__/index/images/delete.png"/>商品回收站</p>-->
+
+            </div>
+        </div>
+        <div class="orderR_Bot">
+            <form>
+                <input class="font" type="text" value="" name="name" placeholder="输入订单号进行搜索"/>
+                <input class="ss" type="submit" value="搜索"/>
+            </form>
+            <div class="order_box">
+                <div class="orderB_box1">
+                    <ul>
+                        <li class="on">宝贝</li>
+                        <li>单位</li>
+                        <li>数量</li>
+                        <li>联系商家</li>
+                        <li>实付款</li>
+                        <li>交易状态</li>
+                        <li>交易操作</li>
+                    </ul>
+                </div>
+                <div class="orderB_box2">
+                    <!--<form>-->
+                        <!--<input class="quanxuan" type="checkbox" value=""/>全选-->
+                        <!--<input type="submit" class="shouhuo" value="批量确认收货"/>-->
+                        <!--<input type="submit" class="shanchu" value="批量删除">-->
+                    <!--</form>-->
+                </div>
+                <!--所有订单可循环  所有订单可循环  所有订单可循环   所有订单可循环   所有订单可循环   所有订单可循环-->
+                {volist name="res" id="vo"}
+                <div class="order_all">
+                    <div class="ordAll_T">
+                        <ul>
+                            <li class="on">
+                               <span>{$vo.starttime|date="Y-m-d",###}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                订单号: {$vo.order}
+                            </li>
+
+                            <li>
+                                <div class="img"><img src="__STATIC__/index/images/tb.png"/>{volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}
+                                    {volist name="buser" id="bu"}
+                                        {if condition="$goods.uid == $bu.id"}
+                                        {$bu.enterprisename}
+                                    {/if}
+                                    {/volist}
+                                    {/if}{/volist}</div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    {volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}
+                                    {volist name="buser" id="bu"}
+                                    {if condition="$goods.uid == $bu.id"}
+                                    联系我们：电话{$bu.contactphone}
+                                    {/if}
+                                    {/volist}
+                                    {/if}{/volist}
+                                </a>
+                            </li>
+                            <li>
+                                <div class="sc"><a href="{:url('Personal/delete',['id'=>$vo.id])}"><img src="__STATIC__/index/images/delete.png"/></a></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="ordAll_B">
+                        <ul>
+                            <li class="on">
+                                <div class="dd_L">
+                                    <img src='{volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}{$goods.image}{/if}{/volist}'/>
+                                    <p>{volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}{$goods.goods_name}{/if}{/volist}</p>
+                                    <span1>快递号: {$vo.couriername}-{$vo.courier}</span1>
+
+                                &nbsp;
+
+
+                                </div>
+                                <div class="bh_icon">
+                                    <div class="i1"><a href="" title="7天无理由退换"><img src="__STATIC__/index/images/7tbh.png" alt="7天无理由退换"/></a></div>
+                                    <div class="i1"><a href="" title="如实描述"><img src="__STATIC__/index/images/rsms.png" alt="7天无理由退换"/></a></div>
+                                    <div class="i1"><a href="" title="正品保证"><img src="__STATIC__/index/images/zpbz.png" alt="7天无理由退换"/></a></div>
+                                </div>
+                            </li>
+                            <li>￥{volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}{$goods.price}{/if}{/volist}</li>
+                            <li>{$vo.num}</li>
+                            <li>
+                                <p>            {volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}
+                                    {volist name="buser" id="bu"}
+                                    {if condition="$goods.uid == $bu.id"}
+                                    电话：{$bu.contactphone}
+                                    {/if}
+                                    {/volist}
+                                    {/if}{/volist}</p>
+                                <p>    {volist name="goodsres" id="goods"}{if condition="$vo.gid == $goods.id"}
+                                    {volist name="buser" id="bu"}
+                                    {if condition="$goods.uid == $bu.id"}
+                                    公司QQ：{$bu.contactqq}
+                                    {/if}
+                                    {/volist}
+                                    {/if}{/volist}</p>
+                                <!--<p>运费险已出单</p>-->
+                            </li>
+                            <li><span>￥{$vo.total}</span></li>
+                            <li>
+                                <p>{if condition="$vo.pay == 1"}
+                                    {if condition="$vo.status ==0 "}
+                                        未发货
+                                    {/if}
+                                    {if condition="$vo.status==1"}
+                                        发货中
+                                    {/if}
+                                    {if condition="$vo.status ==2"}
+                                        已收货
+                                    {/if}
+                                    {/if}
+                                    {if condition="$vo.pay == 0"}
+                                        未支付
+                                    {/if}
+                                </p>
+                            </li>
+                            <li>
+
+                                    {if condition ="$vo.pay == 0"}
+                                 <a href="{:url('Settlement/index',['id'=>$vo.gid,'num'=>$vo.num,'total'=>$vo.total])}"> <input class="djsh" type="submit" value="去付款"/></a>
+                                    {/if}
+                                    {if condition="$vo.pay ==1"}
+
+                                    {if condition="$vo.status ==0 "}
+                                    <input class="djsh" type="submit" value="未发货"/>
+                                    {/if}
+                                    {if condition="$vo.status ==1"}
+                                    <a href="{:url('Personal/status',['id'=>$vo.id,'status'=>'2'])}"><input class="djsh" type="submit" value="确认收货"/></a>
+                                {/if}
+                                    {if condition="$vo.status ==2"}
+                                    <input class="djsh" type="submit" value="已收货"/>
+                                    {/if}
+                                    {/if}
+
+                            </li>
+                            <div class="clear"></div>
+                        </ul>
+                    </div>
+                    <!--同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环 同家店铺可循环-->
+
+                    <div class="clear"></div>
+                </div>
+                {/volist}
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="fy_page">
+        <ul>
+            <li>上一页</li>
+            <li>下一页</li>
+            <div class="clear"></div>
+        </ul>
+    </div>
+    <div class="clear"></div>
+</div>
+<!--订单页面结束-->
+
+{include file="public/footers" /}

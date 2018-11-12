@@ -1,0 +1,41 @@
+{extend name="public/base" /}
+{block name="main"}
+
+<form class="form form-horizontal" id="form-article-add" action="{:url('Classification/exits',['id'=>$cates.id])}" method="post">
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类栏目：</label>
+			<div class="formControls col-xs-8 col-sm-4">
+				<span class="select-box">
+				<select name="pid" class="select">
+					<option value="{$cates->pid}">{$cates->name}</option>
+					<option value="0">顶级分类</option>
+					{volist name="cateRes" id="cate"}
+					<option value="{$cate.id}"><?php echo str_repeat('&nbsp;&nbsp;&nbsp;', $cate['level']);?>
+
+					{if condition="($cate['level'])"}
+					├
+					{/if}
+					{$cate.name}
+					</option>
+					{/volist}
+				</select>
+				</span>
+			</div>
+		</div>
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>分类名称：</label>
+			<div class="formControls col-xs-5 col-sm-3">
+				<input type="text" class="input-text" value="{$cates->name}" placeholder="" id="" name="name">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+				<button class="btn btn-primary radius"><i class="Hui-iconfont"></i> 确定</button>
+			</div>
+		</div>
+		
+	</form>
+
+{/block}
+ {/block}

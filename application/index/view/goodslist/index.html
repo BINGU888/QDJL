@@ -1,0 +1,219 @@
+{include file="public/headers" /}
+		<!--列表1页面开始-->	
+		<div class="list1">
+			<div class="mbox">
+				<div class="catpos">
+					<img src="__STATIC__/index/images/nav.png"/>
+					<p>您的位置：首页 > 整机电教 > 手机>全网通手机</p>
+					<form action="{:url('Goodslist/brandlist')}" method="post">
+					<input type="" name="name">
+					<button>搜索品牌</button>
+					</form>
+					<div class="clear"></div>
+				
+				</div>
+				<div class="tuijian">
+					<div class="paizi">
+						<p>推荐品牌：</p>
+						<ul>
+							{volist name="$brand" id="vo"}
+							<li><a href="{:url('Goodslist/list',['brandid'=>$vo.id])}"><img style="width: 160px;height: 70px" src="{$vo.image}"/></a></li>
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+						<a href="/"><p>
+							更多<br/>
+							<img src="__STATIC__/index/images/more.png"/>
+						</p></a>
+						<div class="clear"></div>
+					</div>
+					<div class="shangjia">
+						<p>推荐商家：</p>
+						<ul>
+							{volist name="$vipuser" id= "brand"}
+							
+							<li>
+								<a href="{:url('Store/index',['id'=>$vo.id])}"><img style="width: 100px;height: 50px;" src="{$brand.image}"/>
+								<p>
+									{volist name="$user" id ="vo"}
+									{if condition="($brand.uid == $vo.id)"}
+								{$vo.enterprisename}{/if}
+							{/volist}
+						</p></a>
+							</li>
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+						<a href="/"><p>
+							更多<br/>
+							<img src="__STATIC__/index/images/more.png"/>
+						</p></a>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<div class="list1_left">
+					<div class="list1_price">
+						<p>价格：</p>
+						<ul>
+							<a href="{:url('Goodslist/index',['big'=>'3000','small'=>'0','pid'=>$pid])}"><li>3000元以下</li></a>
+							<a href="{:url('Goodslist/index',['big'=>'4000','small'=>'3000','pid'=>$pid])}"><li>3000-4000</li></a>
+							<a href="{:url('Goodslist/index',['big'=>'6000','small'=>'4000','pid'=>$pid])}"><li>4000-6000</li></a>
+							<a href="{:url('Goodslist/index',['big'=>'8000','small'=>'6000','pid'=>$pid])}"><li>6000-8000</li></a>
+							<a href="{:url('Goodslist/index',['big'=>'','small'=>'8000','pid'=>$pid])}"><li>8000元以上</li></a>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="list1_paixu">
+						<ul>
+							<a href="/"><li class="selected">综合排序</li></a>
+							<a href="/"><li>热度</li></a>
+							<a href="/"><li>价格</li></a>
+							<a href="/"><li>上架时间</li></a>
+							<div class="clear"></div>
+						</ul>
+					</div>
+					<div class="list1_pro">
+						<ul>
+							{volist name="goods" id="vo"}
+							
+							<li>
+								<a href="{:url('Goodsdetails/index',['goodsid'=>$vo.id])}">
+								<img style="width: 200px;height:200px" src="{$vo.image}"/>
+								<p class="red">￥{$vo.price}</p>
+								<p class="title">{$vo.goods_name}</p>
+								<p class="dp_name"><img src="__STATIC__/index/images/dianpu.png"/><span>
+								{volist name="user" id="uid"}
+								{if condition="($uid.id == $vo.uid)"}{$uid.enterprisename}{/if}
+									{/volist}</span></p>
+								
+								<p class="dp_age">
+									<img src="__STATIC__/index/images/money.jpg"/>
+									<img src="__STATIC__/index/images/chengxin.jpg"/>
+									<span>1年</span>
+									<div class="clear"></div>
+								</p>
+								</a>
+							</li>
+					
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+						
+ 
+
+					</div>
+						<div class="pages">
+						<!-- <span class="list2_order_page_select">1</span> -->
+						{volist name="num" id="vo"}
+						<a href="{:url('Goodslist/index',['pages'=>$vo,'pid'=>$pid])}"><span
+							{if condition="$vo==$pages"}class="selecte"{/if}
+
+							>{$vo}</span></a>
+						{/volist}
+						<a href="{:url('Goodslist/index',['pages'=>$pages+1,'pid'=>$pid])}"><span>下一页</span></a>
+					</div>
+				</div>
+				<div class="list1_right">
+					<div class="banner1">
+						<div id="slideBox1" class="slideBox1">
+							<div class="hd">
+								<ul><li></li><li></li><li></li></ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="banner1_posi">
+							<p>高考过后换什么手机，这份清单了解一下</p>
+						</div>
+						<script id="jsID" type="text/javascript">
+						jQuery(".slideBox1").slide( { mainCell:".bd ul",autoPlay:true});
+						</script>
+					</div>
+					<div class="xinwen">
+						<div class="xw_title">
+							<p>热销活动</p>
+						</div>
+						<ul>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+							</ul>
+					</div>
+					<div class="gggg">
+						<a href="/"><img src="__STATIC__/index/images/gggg.jpg"/></a>
+					</div>
+					<div class="gggg">
+						<a href="/"><img src="__STATIC__/index/images/gggg1.jpg"/></a>
+					</div>
+					<div class="xinwen">
+						<div class="xw_title">
+							<p>热销活动</p>
+						</div>
+						<ul>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+							</ul>
+					</div>
+					<div class="banner2">
+						<div id="slideBox2" class="slideBox2">
+							<div class="hd">
+								<ul><li></li><li></li><li></li></ul>
+							</div>
+							<div class="bd">
+								<ul>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+									<li><a href="/" target="_blank"><img src="__STATIC__/index/images/little_banner.jpg" /></a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="banner2_posi">
+							<p>高考过后换什么手机，这份清单了解一下</p>
+						</div>
+						<script id="jsID" type="text/javascript">
+						jQuery(".slideBox2").slide( { mainCell:".bd ul",autoPlay:true});
+						</script>
+					</div>
+					<div class="xinwen">
+						<div class="xw_title">
+							<p>热销活动</p>
+						</div>
+						<ul>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+								<li><a href="/">你没有看错！AI香水驾到</a></li>
+							</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		
+		<!--列表1页面结束-->
+
+	{include file="public/footers" /}

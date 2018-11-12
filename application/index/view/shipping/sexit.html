@@ -1,0 +1,123 @@
+{include file="public/headers" /}
+<!--订单页面开始-->
+<script>
+    $(function(){
+        $(".con").eq(0).hide();  //有的页面在开始的时候其中一个是展开的，这个作用是让第一个con显示，eq是获取第几个元素，从0开始计数
+        //$(".con").first().show();  跟上面的意义是一样的，获取第一个元素，获取最后一个是list
+        $(".orderL_nav .yy").click(function(){
+            $(this).next().slideToggle().siblings(".con").slideUp();//点击后，点击第一个展开，点击第二个展开后第二个会合起来
+            //获取当前元素 下一个  展开关闭       获取同辈元素（一样的） 收起
+        })
+    })
+</script>
+
+<div class="orders">
+    {include file="public/plist" /}
+    <form action="{:url('Shipping/update',['id'=>$res.id])}" method="post">
+        <div class="add_dd">
+
+            <div class="add_tit">
+                <p>修改收货地址</p>
+            </div>
+            <div class="add_con">
+                <div class="ddxx_1">
+                    <div class="xx_adress"><span>*</span>地址信息：</div>
+                    <form class="form-inline">
+                        <div id="distpicker5">
+                            <li class="relative">
+                                <font>*</font>
+                                <span>选择营业地区：</span>
+
+                                <div class="clear"></div>
+                                <div class="position1">
+
+                                    <select name="provinceid" id="provinceid" class="select">
+                                        <option value='{volist name="city" id="vo"}{if condition="$vo.id == $res.provinceid"}{$vo.id}'>{$vo.name}{/if}{/volist}</option>
+                                        {foreach $cateCity as $vo}
+                                        <option value="{$vo.id}">{$vo.name}</option>
+                                        {/foreach}
+                                    </select>
+
+                                    <select name="cityid" id="cityid">
+                                        <option value='{volist name="city" id="vo"}{if condition="$vo.id == $res.cityid"}{$vo.id}'>{$vo.name}{/if}{/volist}</option>
+
+                                    </select>
+                                    <select name="areaid" id="areaid">
+                                        <option value='{volist name="city" id="vo"}{if condition="$vo.id == $res.areaid"}{$vo.id}'>{$vo.name}{/if}{/volist}</option>
+                                    </select>
+
+                                </div>
+                            </li>
+                            <li>
+                        </div>
+                    </form>
+                </div>
+                <div class="ddxx_2">
+                    <div class="xx_adress"><span>*</span>详细地址：</div>
+                    <input type="text" class="xx_input" value="{$res.address}" name="address" placeholder="请输入详细地址信息，如：道路、门牌号、小区、楼栋号、单元等信息"/>
+                </div>
+                <div class="ddxx_3">
+                    <div class="xx_adress">邮政编码：</div>
+                    <input type="text" class="yzbm_input" value="{$res.zipcode}" name="zipcode" placeholder="如您不清楚邮递区号，请填写000000"/>
+                </div>
+                <div class="ddxx_4">
+                    <div class="xx_adress"><span>*</span>收货人姓名：</div>
+                    <input type="text" class="name_input" value="{$res.name}" name="name" placeholder="请输入收货人姓名"/>
+                </div>
+                <div class="ddxx_5">
+                    <div class="xx_adress"><span>*</span>联系电话：</div>
+                    <input type="text" class="dh_input" value="{$res.phone}" name="phone" placeholder="请输入手机号码"/>
+                </div>
+            </div>
+            <div class="bc">
+                <button class="baocun">保存</button>
+                <button class="baocun">返回</button>
+
+            </div>
+    </form>
+
+</div>
+<div class="clear"></div>
+<script>
+    //获取省级ID 并更新市级
+    $('#provinceid').change(function(){
+        //获取省级ID
+        var provinceid = $('#provinceid').val();
+        //发送ajax
+        var url = "{:url('Merchant/provinceid')}";
+        var provinceid= {provinceid:provinceid};
+        $.post(url,provinceid,function(data){
+            var html = '<option value="">市</openid>';
+            var len = data.length;
+            for(var i = 0 ; i< len;i++){
+                html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+            }
+            $('#cityid').html('').append(html);
+        })
+    });
+
+    //获取市级ID 并更新区
+    $('#cityid').change(function(){
+        //获取市级ID
+        var cityid = $('#cityid').val();
+        //发送ajax 更新区级
+        var url = "{:url('Merchant/cityid')}";
+        var cityid= {cityid:cityid};
+        $.post(url,cityid,function(data){
+            var html = '<option value="">区</openid>';
+            var len = data.length;
+            for(var i = 0 ; i< len;i++){
+                html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+            }
+
+            $('#areaid').html('').append(html);
+        })
+    });
+
+</script>
+</div>
+<script src="js/distpicker.data.js"></script>
+<script src="js/distpicker.js"></script>
+<script src="js/main.js"></script>
+<!--订单页面结束-->
+{include file="public/footers" /}

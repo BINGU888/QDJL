@@ -1,0 +1,325 @@
+{include file="public/headers" /}
+
+     {include file="public/storeheader" /}
+    <!--店铺导航-->
+
+<style>
+/*分页*/
+.pagination {}
+.pagination li {display: inline-block;margin-right: -1px;padding: 8px;border: 1px solid #e2e2e2;min-width: 50px;text-align: center;}
+.pagination li.active {background: #009688;color: #fff;border: 1px solid #009688;}
+.pagination li a {display: block;text-align: center;}
+</style>
+		<!--列表1页面开始-->	
+		<div class="chanpin_xz">
+			<div class="mbox">
+				<div class="cp_catpos">
+					<img src="__STATIC__/index/images/nav.png"/>
+					<p>您的位置：首页 > >{volist name="treeres" id="vo"}
+						{if condition="$vo.id == $twotrees.pid"}{$vo.name}{/if}
+						{/volist}>{$tree->name} >{volist name="treeres" id="vo"}
+						{if condition="$vo.id == $tree.pid"}{$vo.name}{/if}
+						{/volist}>{$tree->name}</p>
+					<div class="clear"></div>
+				</div>
+				<div class="tjcp">
+					<div class="pinpai">
+						<p>推荐品牌：</p>
+						<ul>
+							{volist name="brand" id="vo"}
+							<li><a href="{:url('store/show',['id'=>$bstore->uid,'brandid'=>$vo.id,'pid'=>$vo.cid])}"><img style="width: 150px;height: 50px;" src="{$vo.image}"/></a></li>
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+		<!-- 				<a href="/"><p>
+							更多<br/>
+							<img src="__STATIC__/index/images/more.png"/>
+						</p></a> -->
+						<div class="clear"></div>
+					</div>
+					
+				<div class="chanpin_xz_left">
+					
+<!-- 					<div class="chanpin_xz_paixu">
+						<ul>
+							<a href="/"><li class="selected">综合排序</li></a>
+							<a href="/"><li>热度</li></a>
+							<a href="/"><li>价格</li></a>
+							<a href="/"><li>上架时间</li></a>
+							<div class="clear"></div>
+						</ul>
+					</div> -->
+					<br>
+					<div class="chanpin_xz_pro">
+						<ul>
+							{volist name="res" id="vo"}
+							<li>
+								<a href="/">
+								<img style="width: 210px;height: 200px;" src="{$vo.image}"/>
+								<p class="red">￥{$vo.price}</p>
+								<p class="title">{$vo.goods_name}</p>
+								<p class="dp_name"><img src="__STATIC__/index/images/dianpu.png"/><span>{$buser->enterprisename}</span></p>
+								<p class="dp_age">
+									<img src="__STATIC__/index/images/money.jpg"/>
+									<img src="__STATIC__/index/images/chengxin.jpg"/>
+									<span>1年</span>
+									<div class="clear"></div>
+								</p>
+								</a>
+							</li>
+							{/volist}
+							<div class="clear"></div>
+						</ul>
+						<div class="pages">
+			
+						</div>
+					</div>
+				</div>
+							{if condition="($res neq null )"}
+							<li>{$res->render()}</li>
+						{/if}
+				
+		</div>
+		
+		
+		<!--列表1页面结束-->
+
+			<!--管理开始-->
+		<div class="guanli">
+			<div class="mbox">
+				<div class="guanli_top">
+					<ul>
+						<li>
+							<img src="__STATIC__/index/images/sheng.png" />
+							<div class="guanli_sheng">
+								<p>省钱实惠</p>
+								<font>50000+高性价比商品</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bao.png" />
+							<div class="guanli_sheng">
+								<p>售后保证</p>
+								<font>为您提供售后无忧保障</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/zhi.png" />
+							<div class="guanli_sheng">
+								<p>100%品质保障</p>
+								<font>全场正品,采购无忧</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bi.png" />
+							<div class="guanli_sheng">
+								<p>货比三家</p>
+								<font>比一比,价格更透明</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="guanli_bottom">
+					<div class="bt_left">
+						<ul>
+							<font>新手入门</font>
+							<a href="/">
+								<li>注册/登录</li>
+							</a>
+							<a href="/">
+								<li>会员认证</li>
+							</a>
+							<a href="/">
+								<li>找回密码</li>
+							</a>
+							<a href="/">
+								<li>账号管理</li>
+							</a>
+							<a href="/">
+								<li>会员权益</li>
+							</a>
+						</ul>
+						<ul>
+							<font>使用指南</font>
+							<a href="/">
+								<li>查找商家</li>
+							</a>
+							<a href="/">
+								<li>查找商品</li>
+							</a>
+							<a href="/">
+								<li>如何升级</li>
+							</a>
+							<a href="/">
+								<li>关于置顶</li>
+							</a>
+							<a href="/">
+								<li>关于商铺</li>
+							</a>
+						</ul>
+						<ul>
+							<font>售后/售前</font>
+							<a href="/">
+								<li>售前支持</li>
+							</a>
+							<a href="/">
+								<li>售后服务</li>
+							</a>
+							<a href="/">
+								<li>付款说明</li>
+							</a>
+						</ul>
+						<ul>
+							<font>违规说明</font>
+							<a href="/">
+								<li>违规范围</li>
+							</a>
+							<a href="/">
+								<li>处罚条例</li>
+							</a>
+							<a href="/">
+								<li>违规曝光</li>
+							</a>
+							<a href="/">
+								<li>免责声明</li>
+							</a>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="bt_right">
+						<ul>
+							<font>官方微信</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<ul>
+							<font>微信小程序</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--管理结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+			<div class="mbox">
+				<ul>
+					<a href="/">
+						<li>关于渠道精灵</li>
+					</a>
+					<a href="/">
+						<li>联系我们</li>
+					</a>
+					<a href="/">
+						<li>采购中心</li>
+					</a>
+					<a href="/">
+						<li>渠道通</li>
+					</a>
+					<a href="/">
+						<li>平台资讯</li>
+					</a>
+					<a href="/">
+						<li>常见问题</li>
+					</a>
+					<li>客服热线：400-8888-8888</li>
+					<div class="clear"></div>
+				</ul>
+				<p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+				<p>技术支持：诺商信息</p>
+				<p>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+				</p>
+			</div>
+		</div>
+
+		<!--footer结束-->
+		
+		<!--右侧定位开始-->
+		<div class="fixed">
+			<div style="float: left;" class="fixed_right">
+				<img src="__STATIC__/index/images/fixed_right.png"/>
+			</div>
+			<ul style="float: right;">
+				<div class="blank20"></div>
+				<li>
+					<img src="__STATIC__/index/images/login.png" width="20"/>
+					<p>登录</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/zhuce.png" width="20"/>
+					<p>注册</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/kefu.png" width="20"/>
+					<p>在线客服</p>
+				</li>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<p><img src="__STATIC__/index/images/bianji.png" width="20"/></p>
+				<p><img src="__STATIC__/index/images/saoma.png" width="20"/></p>
+				<a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/images/huiding.png" width="20"/></p></a>
+				<p id="guanbi"><img src="__STATIC__/index/images/guanbi.png" width="20"/></p>
+			</ul>
+			<div class="clear"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#guanbi").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				  $(".fixed_right").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				});
+			</script>
+            <script type="text/javascript">
+				$(document).ready(function(){
+				  $('#menu').mouseenter(function(){
+				  	$('.absolute').stop().slideDown(300);
+				  	$('.absolute').mouseenter(function(){
+					  $('.absolute').stop();
+					  
+					  });
+				  });
+				  $("#menu, .absolute").mouseleave(function() {
+					  	$('.absolute').stop().slideUp(250);
+					  });
+				});
+			</script>
+			<script>
+				var timeOut;
+				function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+				window.scrollBy(0,-50);
+				timeOut=setTimeout('scrollToTop()',10);
+				}
+				else clearTimeout(timeOut);
+				}
+			</script>
+		</div>
+		
+		
+		
+		<!--右侧定位结束-->
+	</body>
+
+</html>

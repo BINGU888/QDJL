@@ -1,0 +1,51 @@
+{extend name="public/base" /}
+{block name="main"}
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户管理 <span class="c-gray en">&gt;</span> 全部用户 <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+<!--<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a></span> <span class="r">共有数据：<strong>54</strong> 条</span> </div>-->
+<div class="mt-20">
+    <table class="table table-border table-bordered table-bg table-sort">
+        <thead>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox" name="" value=""></th>
+            <th width="70">ID</th>
+            <!-- <th width="80">排序</th> -->
+            <!--<th width="200">LOGO</th>-->
+            <th width="70">商户名</th>
+            <th width="100">公司名称</th>
+            <th width="80">手机号</th>
+            <th width="80">提现金额</th>
+            <th>姓名</th>
+            <th>银行卡号</th>
+            <th width="">开户行地址</th>
+            <th width="100">支付宝号</th>
+            <th width="95">提现时间</th>
+            <th width="100">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {volist name="$res" id="vo"}
+        <tr class="text-c">
+
+            <td><input name="" type="checkbox" value=""></td>
+            <td>{$vo.id}</td>
+            <!-- <td><input type="text" class="input-text text-c" value="1"></td> -->
+            <!--<td><img src="" style="width: 100px;"></td>-->
+            <td class="text-l">{volist name="buser" id="bs"}{if condition="$vo.bid == $bs.id"}{$bs.name}{/if}{/volist}</td>
+            <td class="text-l">{volist name="buser" id="bs"}{if condition="$vo.bid == $bs.id"}{$bs.enterprisename}{/if}{/volist}</td>
+            <td class="text-l">{volist name="buser" id="bs"}{if condition="$vo.bid == $bs.id"}{$bs.phone}{/if}{/volist}</td>
+            <td class="text-l">{$vo.price}元</td>
+            <td class="text-l">{volist name="awal" id="al"}{if condition="$vo.bid == $al.bid"}{$al.name}{/if}{/volist}</td>
+            <td class="text-l">{volist name="awal" id="al"}{if condition="$vo.bid == $al.bid"}{$al.bankcard}{/if}{/volist}</td>
+            <td class="text-l">{volist name="awal" id="al"}{if condition="$vo.bid == $al.bid"}{$al.address}{/if}{/volist}</td>
+            <td class="text-l">{volist name="awal" id="al"}{if condition="$vo.bid == $al.bid"}{$al.paytreasure}{/if}{/volist}</td>
+            <td class="text-l">{$vo.starttime|date="Y年m月d日",###} </td>
+            <td class="user-status"><span class="label label-success">已打款</span></td>
+        </tr>
+        {/volist}
+        </tbody>
+    </table>
+</div>
+</div>
+{/block}
+{/block}

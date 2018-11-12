@@ -1,0 +1,196 @@
+
+{include file="public/headers" /}
+<!--商家库页面开始-->  
+<content>
+<a href="{:url('Card/index')}"><img style="width:70%;height: 120px; display:block; margin:auto;" src="/uploads/20181016/53f7f773ec9983710fce4649b089774f.jpg"></a></a>
+</content>
+<div class="shangjiaku">
+         <!--选择省市区开始--> 
+                   <div class="syftop">
+                     <form class="form-inline" action="{:url('card/citys')}" method="post">
+                      <div id="distpicker5">
+                        <div class="form-group">
+                 
+                          <select class="form-control" name="provinceid" id="provinceid" class="select">
+                                    <option value="">省</option>
+                                    {foreach $cateCity as $vo}
+                                        <option value="{$vo.id}">{$vo.name}</option>
+                                        {/foreach}
+                                    </select>
+
+                                    <select class="form-control" name="cityid" id="cityid">
+                                        <option value="">市</option>
+                                        
+                                    </select>
+                                    <select class="form-control" name="areaid" id="areaid">
+                                        <option value="">区</option>
+                                    </select>
+                          <input id="text" type="text" name="name" value="" placeholder="关键字">
+                          <input id="btn" type="submit" value="搜索">
+                        </div>
+                        <a href="{:url('card/library')}"><input id="more" type="button" value="查看全部"></a>
+                        
+                      </div>
+                    </form>
+                            <script src="js/distpicker.data.js"></script>
+                            <script src="js/distpicker.js"></script>
+                            <script src="js/main.js"></script>
+                  </div>
+         <!--选择省市区结束--> 
+    
+         <!--查看位置弹出页面开始-->
+                <script>
+                        $(function(){
+                            $("ul#xiangqing").on("click","li",function(){
+                           
+                               $(".lasttwo_close").click(function(){
+                                $(".lasttwo_video").fadeOut()
+                                $(".lasttwo_bg").fadeOut()
+                            })
+                                $(".lasttwo_video").fadeIn()
+                                $(".lasttwo_bg").fadeIn()
+                                $(".jrdp").fadeIn()
+                                id = $(this).val();
+
+                                $.post("{:url('card/details')}",{id:id},function(data)
+                                {   
+                                    if(data =='1'){
+                                        window.location.href="{:url('Login/index')}";
+                                    }else{
+                                       $("#sda").text(data.enterprisename);
+                                
+                                       var id = data.id;
+                                      
+                                       
+                                       $('#enterprisename').html(data.company);
+                                       $('#province').html(data.province);
+                                       $('#city').html(data.city);
+                                       $('#contactname').html(data.name);
+                                       $('#contactqq').html(data.qq);
+                                       $('#contactphone').html(data.phone);
+                                       $('#address').html(data.address);
+                                       $('#content').html(data.content);    
+                                     
+                                    }
+                                    
+
+                                 });
+                   
+                            })
+                            
+                        })
+
+                </script>
+                    <div class="lasttwo_video">
+                            <div class="lasttwo_close">*</div>
+                                <div class="nr">
+                                <p>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;" >公司名称：</span> &nbsp;<span id="enterprisename">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">省：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="province">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">市：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span id="city">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">联系人：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="contactname">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">联系电话：</span>&nbsp;&nbsp;<span id="contactphone">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">公司QQ：</span>&nbsp;&nbsp;&nbsp;<span id="contactqq">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">地址：</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="address">请登录</span><br/>
+                                    <span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;">主营业务：</span> &nbsp;<span id="content">请登录</span><br/>
+                                </p>
+                                
+                                
+                                </div>
+                            <!-- <div class="jrdp" ><a id="a1" href="">进入店铺</a></div> -->
+                        </div>
+                        <div class="lasttwo_bg"></div>
+
+            <!--查看位置弹出页结束面-->
+        <div class="syfcenter">
+            <ul>
+                <li>首字母索引：</li>
+                <li><a  {if condition="$letter ==null"} class="on"{/if} href="{:url('card/library')}">全部</a></li>
+                {volist name="letters" id="vo"} 
+                <li><a {if condition="$letter == $vo"}class="on"{/if} href="{:url('card/library',['letter'=>$vo])}">（{$vo}）</a></li>
+                {/volist}
+            </ul>
+        </div>
+        <div class="syfbottom">
+        <div class="syf_tm">
+            <ul>
+                <li class="on">公司名称</li>
+                <li>省</li>
+                <li>市</li>
+                <li>联系人</li>
+                <li>联系电话</li>
+                <li>公司QQ</li>
+                <li>地址</li>
+                <li>主营业务</li>
+                <!--<li class="last"><a href="#">详情</a></li>-->
+            </ul>
+        </div>
+        {volist name="res" id="vo"}
+        <div class="syf_box1">
+            <ul class="last" id="xiangqing">
+                <img src="__STATIC__/index/images/uytr.png" style="margin-left:-920px; margin-top:9px;">
+                <li value="{$vo.id}" class="on lasttwo_btm">{$vo.company|substr=0,9}****</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{volist name="city" id="citys"}{if condition="$vo.provinceid == $citys.id"}{$citys.name}{/if}{/volist}</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{volist name="city" id="citys"}{if condition="$vo.cityid == $citys.id"}{$citys.name}{/if}{/volist}</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{$vo.name|substr=0,3}****</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{$vo.phone|substr=0,5}****</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{$vo.qq|substr=0,4}****</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{$vo.address|substr=0,50}</li>
+                <li value="{$vo.id}" class="lasttwo_btm">{$vo.content}</li>
+                <li value="{$vo.id}" class="last lasttwo_btm">详情</li>
+            </ul>
+        </div>
+        {/volist}
+</div>
+<!--商家库页面结束-->
+
+{include file="public/footers" /}
+   
+        
+        <!--右侧定位结束-->
+    <script type="text/javascript">
+var sprycheckbox1 = new Spry.Widget.ValidationCheckbox("sprycheckbox1");
+        </script>
+
+
+        <script>
+            //获取省级ID 并更新市级
+            $('#provinceid').change(function(){
+                //获取省级ID
+             var provinceid = $('#provinceid').val();
+                //发送ajax
+                var url = "{:url('Merchant/provinceid')}";
+                var provinceid= {provinceid:provinceid};
+                $.post(url,provinceid,function(data){
+                    var html = '<option value="">市</openid>';
+                    var len = data.length;
+                    for(var i = 0 ; i< len;i++){
+                        html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+                    }
+                    $('#cityid').html('').append(html);
+                    })
+            });
+
+            //获取市级ID 并更新区
+            $('#cityid').change(function(){
+                //获取市级ID
+             var cityid = $('#cityid').val();
+                //发送ajax 更新区级
+                var url = "{:url('Merchant/cityid')}";
+                var cityid= {cityid:cityid};
+                $.post(url,cityid,function(data){
+                    var html = '<option value="">区</openid>';
+                    var len = data.length;
+                    for(var i = 0 ; i< len;i++){
+                        html = html + '<option value="'+ data[i].id +'">'+ data[i].name +'</option>';
+                    }
+
+                    $('#areaid').html('').append(html);
+                    })
+            });
+
+        </script>
+    </body>
+
+</html>

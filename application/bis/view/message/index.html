@@ -1,0 +1,38 @@
+{extend name="public/base" /}
+{block name="main"}
+</br>
+<table class="table table-border table-bordered table-bg table-sort">
+    <thead>
+    <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="70">ID</th>
+        <th width="80">商品名称</th>
+        <th width="200">商品封面图</th>
+        <th width="120">用户姓名</th>
+        <th width="120">手机号</th>
+        <th width="120">留言内容</th>
+        <th width="100">时间</th>
+        <th width="80">状态</th>
+        <!--<th width="100">操作</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="res" id="vo"}
+    <tr class="text-c">
+        <td><input name="" type="checkbox" value=""></td>
+        <td>{$vo.id}</td>
+         <!--<td><input type="text" class="input-text text-c" value="1"></td> -->
+        <td>{volist name="goods" id="go"}{if condition ="$vo.gid == $go.id"}{$go.goods_name}{/if}{/volist}</td>
+        <td><img style="width: 100px" src="{volist name="goods" id="go"}{if condition ="$vo.gid == $go.id"}{$go.image}{/if}{/volist}"></td>
+        <td class="text-l">{$vo.name}</td>
+        <td class="text-l">{$vo.phone}</td>
+        <td>{$vo.content}</td>
+        <td>{$vo.starttime}</td>
+       <td><a href="{:url('Message/delete',['id'=>$vo.id])}"><span class="label label-danger">  删除</span></a></td>
+        <!--<td class="f-14 product-brand-manage"><a style="text-decoration:none" onClick="product_brand_edit('品牌编辑','codeing.html','1')" href="{:url('goods/exit',['id'=>$vo.id])}" title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="active_del(this,'10001')" href="{:url('Goods/delete',['id'=>$vo.id])}" title="删除"><i class="Hui-iconfont">&#xe6e2;</i></a></td>-->
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+{/block}
+{/block}

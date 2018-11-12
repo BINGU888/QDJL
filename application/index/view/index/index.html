@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="__STATIC__/index/css/css.css" rel="stylesheet" type="text/css" charset="UTF-8" />
+		<link href="__STATIC__/index/css/index.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="__STATIC__/index/js/jquery.min.js"></script>
+		<script src="__STATIC__/index/js/jquery.SuperSlide.2.1.1.js"></script>
+	</head>
+
+	<body>
+		<!--头部开始-->
+		<div class="header">
+			<div class="mbox relative">
+				<div class="header_left">
+					<img src="__STATIC__/index/images/weizhi.png" />
+					<p>地址定位：{$cityname}</p>
+					<div class="clear"></div>
+					<!--<div class="header_posi">-->
+						<!--<ul>-->
+							<!--<li>北京</li>-->
+							<!--<li>上海</li>-->
+							<!--<li>山东</li>-->
+							<!--<li>山西</li>-->
+							<!--<li>河北</li>-->
+							<!--<li>河南</li>-->
+							<!--<li>湖北</li>-->
+							<!--<li>湖南</li>-->
+						<!--</ul>-->
+					<!--</div>-->
+				</div>
+				<div class="header_right">
+					{if condition="$Think.session.id eq ''"}
+					<a href="{:url('Login/index')}"><span>请登录</span></a>
+					{else}
+					<span>欢迎您:<font>{$Think.session.uname}</font></span>
+					{/if}
+					
+					<ul>
+						{if condition = "$Think.session.id eq ''"}
+						<font>
+							<a href="{:url('Registered/index')}"><li>免费注册</li></a>
+						</font>
+						{/if}
+
+						<a href="{:url('bis/login/index')}"><li>商户登录</li></a>
+						<div class="clear"></div>
+					</ul>
+					<span><font>服务热线：400-8888-8888</font></span>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--头部结束-->
+
+		<!--广告开始-->
+		<div class="gg"></div>
+		<!--广告结束-->
+
+		<!--logo开始-->
+		<div class="logo">
+			<div class="mbox">
+				<div class="logo_left">
+					<img src="__STATIC__/index/images/logo.jpg" />
+				</div>
+				<div class="logo_center">
+					<img src="__STATIC__/index/images/yu.jpg" />
+					<div class="weizhi">
+						<img src="__STATIC__/index/images/weizhi.png" />
+						<span>定位:</span>
+						<a href="/">山东省-济南市</a>
+						<div class="clear"></div>
+					</div>
+				</div>
+
+				<div class="logo_right">
+					<div class="input">
+						<form action="{:url('Goodslist/index')}" method="post">
+						<input type="text" class="input1" placeholder="请输入搜索内容" name="goods_name" value="" />
+						<!-- <input  value="搜索" class="input2" /> -->
+						<button class="input2">搜索</button>
+						</form>
+						<div class="clear"></div>
+					</div>
+
+					<ul>
+						<li>整机电数</li>
+						<li>DIY散热件</li>
+						<li>周边配件</li>
+						<li>手机通讯</li>
+						<li>数码存储</li>
+						<li>办公设备</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!--logo结束-->
+
+		<!--nav开始-->
+		<div class="nav">
+			<div class="mbox">
+				<div class="menu">
+					<img src="__STATIC__/index/images/menu.png" />
+					<p>全部商品分类</p>
+					<div class="clear"></div>
+				</div>
+				<ul>
+					<a href="/"><li>首页</li></a>
+					<li>采购中心</li>
+					<a href="{:url('card/library')}"><li class="selected">渠道通</li></a>
+					<a href="{:url('information/index')}"><li>平台资讯</li></a>
+					<a href="{:url('problem/index')}"><li>常见问题</li></a>
+					<div class="clear"></div>
+				</ul>
+				<div class="gongyingshang"></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!--nav结束-->
+
+		<!--banner开始-->
+		
+		
+
+		<div class="banner">
+			<div id="slideBox" class="slideBox">
+			<div class="bd">
+				<ul>
+					<li style="background: url(__STATIC__/index/images/banner.jpg) no-repeat center;"></li>
+					<li style="background: url(__STATIC__/index/images/banner.jpg) no-repeat center;"></li>
+					<li style="background: url(__STATIC__/index/images/banner.jpg) no-repeat center;"></li>
+				</ul>
+			</div>
+
+			<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+			<a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+
+			</div>
+			<div class="mbox relative">
+				<div class="absolute">
+					<ul id="nav">
+						{foreach $cateRes as $ontree}
+						<li id="mainCate-1" class="mainCate">
+							<img src="__STATIC__/index/images/diannao.png" width="20"/>
+							<p>{$ontree.name}</p>
+							<div class="clear"></div>
+							<div class="subCate">
+								{foreach $ontree.child as $towtree}
+								<div class="erji">
+									<p>{$towtree.name}</p>
+									<div class="leixing">
+										{foreach $towtree.child as $threetree}
+										<span><a href="{:url('Goodslist/index',['pid'=>$threetree.id])}">{$threetree.name}</a></span>
+										{/foreach}
+									</div>
+									<div class="clear"></div>
+									{/foreach}
+								</div>
+							</div>
+						</li>
+							{/foreach}
+					</ul>
+				</div>
+				<div class="absolute1">
+					<div class="duxiang">— 会员独享 —</div>
+					<div class="tequan">
+						<div class="blank20"></div>
+						<p>商家专属店铺</p>
+						<p>官方加V勋章</p>
+						<p>海量渠道供应商</p>
+						<p>商家排名前置</p>
+						<p>商家商品推荐</p>
+						<p>店铺信息公示</p>
+						<div class="blank20"></div>
+						<div class="clear"></div>
+						<a href="{:url('login/index')}"><input type="button" value="立即登录 >"/></a>
+						<a href="{:url('registered/index')}"><input type="button" value="免费注册 >"/></a>
+					</div>
+					<div class="dongtai_top">
+						<p><img src="__STATIC__/index/images/zhong.jpg"/></p>
+						<a href="{:url('index/information/index')}"><p>更多></p></a>
+						<div class="clear"></div>
+					</div>
+					<div class="dongtai_con">
+						<ul>
+							{volist name="announcement" id="vo"}
+							<li><span>[公告] </span>{$vo.title}</li>
+							{/volist}
+						</ul>
+					</div>
+				</div>
+			</div>
+				
+		
+		<script id="jsID" type="text/javascript">
+		jQuery(".slideBox").slide( { mainCell:".bd ul",autoPlay:true });
+		</script>
+		</div>
+		
+		
+		<script type="text/javascript">
+			jQuery("#nav").slide({
+				type: "menu",
+				titCell: ".mainCate",
+				targetCell: ".subCate",
+				delayTime: 0,
+				triggerTime: 0,
+				defaultPlay: false,
+				returnDefault: true
+			});
+		</script>
+		<!--banner结束-->
+
+		<!--优势开始-->
+
+		<div class="youshi">
+			<div class="mbox bg">
+				<div class="xunjia">
+					<b>询价</b>
+					<p>货比三家不吃亏</p>
+				</div>
+				<div class="yijia">
+					<b>议价</b>
+					<p>价格议到你满意</p>
+				</div>
+				<div class="jizhong">
+					<b>集中</b>
+					<p>数码设备集中营</p>
+				</div>
+				<div class="pingjia">
+					<b>平价</b>
+					<p>价格更公道透明</p>
+				</div>
+				<div class="zizhi">
+					<b>资质</b>
+					<p>携手行业正规企业</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!--优势结束-->
+
+		<!--大牌开始-->
+		<div class="dapai">
+			<div class="mbox">
+				<div class="dapai_left">
+					<a href="/"><img src="__STATIC__/index/images/dapai.jpg" /></a>
+				</div>
+				<div class="dapai_right">
+					<ul>
+						{volist name="$brand" id="vo"}
+						<li>
+							<img style="width: 150px; height: 100px;" src="{$vo.image}" />
+						</li>
+						{/volist}
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+
+		<!--大牌结束-->
+
+		<!--广告1开始-->
+		<div class="gg1">
+			<div class="mbox">
+				<img src="__STATIC__/index/images/gg1.png" />
+			</div>
+		</div>
+
+
+
+
+
+
+
+
+		<!--&lt;!&ndash;1F开始&ndash;&gt;-->
+		<!--<div class="layone">-->
+			<!--{foreach $cateRes as $ontree}-->
+			<!--<div class="mbox">-->
+				<!--<div class="layone_left">-->
+
+					<!--<b class="catname">{$ontree.name}</b>-->
+					<!--<div class="layone_left_title">-->
+						<!--<p class="tit">中兴ZTE W981无线控制器</p>-->
+						<!--<p class="description">双引擎 双电源 便捷无线 贴心服务</p>-->
+					<!--</div>-->
+					<!--<img src="__STATIC__/index/images/product.png" />-->
+					<!--{foreach $ontree.child as $towtree}-->
+					<!--{foreach $towtree.child as $treetree}-->
+					<!--<ul>-->
+						<!--<li>{$treetree.name}</li>-->
+					<!--</ul>-->
+					<!--{/foreach}-->
+					<!--{/foreach}-->
+				<!--</div>-->
+				<!---->
+				<!--<div class="layone_right" id="layone_rights">-->
+					<!--<div class="wrap1">-->
+						<!--<div class="tab1">-->
+							<!--<ul class="tab1-hd" id="hove">-->
+								<!--<li class="active1">热门产品</li>-->
+								<!--{foreach $ontree.child as $towtree}-->
+								<!--<li value="{$towtree.id}">{$towtree.name}</li>-->
+								<!--{/foreach}-->
+								<!--<p style="float: right;line-height: 58px;color: #f53c4d;">更多></p>-->
+								<!--&lt;!&ndash; <div class="clear"></div> &ndash;&gt;-->
+							<!--</ul>-->
+							<!--<ul class="tab1-bd">-->
+								<!--<li class="thisclass1 selecte">-->
+									<!--<div class="pinpai1">-->
+										 <!--<div class="blank10"></div>-->
+										 <!--<ul id="company">-->
+										 	<!--<li>品牌推荐</li>-->
+										 	<!--<div class="clear"></div>-->
+										 <!--</ul>-->
+									<!--</div>-->
+									<!--<div class="biaozhi">-->
+										<!--<ul id="hoveimage">-->
+											<!--<li><img src="__STATIC__/index/images/pai.jpg"/></li>-->
+										 	<!--<div class="clear"></div>-->
+										<!--</ul>-->
+									<!--</div>-->
+									<!--&lt;!&ndash;<div class="product" id="goodsdat">&ndash;&gt;-->
+										<!--&lt;!&ndash;{volist name="$goods" id="vo"}&ndash;&gt;-->
+										<!--&lt;!&ndash;<div class="pro1">&ndash;&gt;-->
+											<!--&lt;!&ndash;<img width="210" src="{$vo.image}"/>&ndash;&gt;-->
+											<!--&lt;!&ndash;<p>{$vo.goods_name}</p>&ndash;&gt;-->
+
+											<!--&lt;!&ndash;<font>¥52505.00</font>&ndash;&gt;-->
+										<!--&lt;!&ndash;</div>&ndash;&gt;-->
+										<!--&lt;!&ndash;{/volist}&ndash;&gt;-->
+									<!--<div id="goodsdata">-->
+
+									<!--</div>-->
+
+										 <!--<div class="clear"></div>-->
+									<!--</div>-->
+								<!--</li>-->
+
+							<!--</ul>-->
+						<!--</div>-->
+					<!--</div>-->
+					<!--<script type="text/javascript">-->
+						<!--$(function() {-->
+							<!--function tabs(tabTit, on, tabCon) {-->
+								<!--$(tabTit).children().hover(function() {-->
+									<!--$(this).addClass(on).siblings().removeClass(on);-->
+									<!--var index = $(tabTit).children().index(this);-->
+									<!--$(tabCon).children().eq(index).show().siblings().hide();-->
+								<!--});-->
+							<!--};-->
+							<!--tabs(".tab1-hd", "active1", ".tab1-bd");-->
+						<!--});-->
+					<!--</script>-->
+
+				<!--</div>-->
+				<!--<div class="clear"></div>-->
+				<!---->
+			<!--</div>-->
+			<!--{/foreach}-->
+		<!--</div>-->
+
+		<!--1F结束-->
+
+{foreach $cateRes as $onetree}
+		<div class="laytwo">
+			<div class="mbox">
+				<div class="laytwo_left">
+					<b class="catname">{$onetree.name}</b>
+					<div class="laytwo_left_title">
+						<p class="tit">中兴ZTE W981无线控制器</p>
+						<p class="description">双引擎 双电源 便捷无线 贴心服务</p>
+					</div>
+					<img src="__STATIC__/index/images/product.png" />
+					<ul>
+						{foreach $onetree.child as $towtree}
+						{foreach $towtree.child as $threetree}
+						<li>{$threetree.name}</li>
+						{/foreach}
+						{/foreach}
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="laytwo_right">
+					<div class="wrap2">
+						<div class="tab2" id="default-{$onetree.id}">
+							<ul class="tab2-hd" id="hove">
+								<!--<li value="0">热门产品</li>-->
+								{foreach $onetree.child as $towtree}
+								<li value="{$towtree.id}">{$towtree.name}</li>
+								{/foreach}
+								<p style="float: right;line-height: 58px;color: #f53c4d;">更多></p>
+								<div class="clear"></div>
+							</ul>
+
+								<li class="thisclass2">
+									<div class="pinpai2">
+										<div class="blank10"></div>
+										{foreach $onetree.child as $towtree}
+										<ul id="company-{$towtree.id}">
+											{/foreach}
+											<li>品牌推荐</li>
+
+											<div class="clear"></div>
+										</ul>
+									</div>
+									<div class="biaozhi">
+										{foreach $onetree.child as $towtree}
+										<ul id="hoveimage-{$towtree.id}">
+											{/foreach}
+											<li><img src=""/></li>
+											<div class="clear"></div>
+										</ul>
+									</div>
+									<div class="produc" id="goodsdat">
+										{foreach $onetree.child as $towtree}
+									<div class="product" id="goodsdata-{$towtree.id}">
+										<div class="clear"></div>
+									</div>
+										{/foreach}
+
+										<!--<div class="pro1" >-->
+
+											<!--<img src=""/>-->
+											<!--<b></b>-->
+											<!--<p></p>-->
+											<!--<font></font>-->
+										<!--</div>-->
+
+								</li>
+							</ul>
+						</div>
+					</div>
+					<script type="text/javascript">
+                        $(function() {
+                            function tabs(tabTit, on, tabCon) {
+                                $(tabTit).children().hover(function() {
+                                    $(this).addClass(on).siblings().removeClass(on);
+                                    var index = $(tabTit).children().index(this);
+                                    $(tabCon).children().eq(index).show().siblings().hide();
+                                });
+                            };
+                            tabs(".tab2-hd", "active2", ".tab2-bd");
+                        });
+					</script>
+
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+{/foreach}
+
+		{include file="public/footer" /}

@@ -1,0 +1,38 @@
+{extend name="public/base" /}
+{block name="main"}
+	</br>
+		<table class="table table-border table-bordered table-bg table-sort">
+			<thead>
+				<tr class="text-c">
+					<th width="25"><input type="checkbox" name="" value=""></th>
+					<th width="70">ID</th>
+					<th width="350">商品名称</th>
+					<th width="200">商品封面图</th>
+					<th width="120">价格</th>
+					<th width="120">库存</th>
+
+					<!-- <th width="10" height="10">描述</th> -->
+					<th>分类推荐</th>
+					<th>促销推荐</th>
+				</tr>
+			</thead>
+			<tbody>
+				{volist name="res" id="vo"}
+				<tr class="text-c">
+					<td><input name="" type="checkbox" value=""></td>
+					<td>{$vo.id}</td>
+					<!-- <td><input type="text" class="input-text text-c" value="1"></td> -->
+					<td>{$vo.goods_name}</td>
+					<td><img style="width: 100px" src="{$vo.image}"></td>
+					<td class="text-l">{$vo.price}</td>
+					<td class="text-l">{$vo.stock}</td>
+			<!-- 		<td>{$vo.content}</td> -->
+					<td><a href="{:url('Store/recommended',['id'=>$vo.id,'storestatus'=>'1'])}"><span class="label label-success">分类推荐</span></a></td>
+					<td><a href="{:url('Store/recommended',['id'=>$vo.id,'storestatus'=>'2'])}"><span class="label label-primary">促销推荐</span></a></td>
+				
+				</tr>
+				{/volist}
+			</tbody>
+		</table>
+{/block}
+ {/block}

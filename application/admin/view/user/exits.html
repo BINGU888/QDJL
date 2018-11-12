@@ -1,0 +1,39 @@
+{extend name="public/base" /}
+{block name="main"}
+<div class="page-container">
+    <form class="form form-horizontal" id="form-article-add" enctype="multipart/form-data" action="{:url('User/update',['id'=>$res->id])}" method="post">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>用户名：</label>
+            <div class="formControls col-xs-4 col-sm-2">
+                <input type="text" class="input-text" value="{$res.name}" placeholder="" id="" name="name">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>手机号：</label>
+            <div class="formControls col-xs-4 col-sm-2">
+                <input type="text" class="input-text" value="{$res.phone}" placeholder="" id="" name="phone">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>邮箱：</label>
+            <div class="formControls col-xs-4 col-sm-2">
+                <input type="text" class="input-text" value="{$res.email}" placeholder="" id="" name="email">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>密码：</label>
+            <div class="formControls col-xs-4 col-sm-2">
+                <input type="text" class="input-text" value="" placeholder="" id="" name="password">
+            </div>
+        </div>
+
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                <button onClick="article_save_submit();" class="btn btn-primary radius" type=""><i class="Hui-iconfont">&#xe632;</i> 修改</button>
+            </div>
+        </div>
+    </form>
+</div>
+{/block}
+{/block}

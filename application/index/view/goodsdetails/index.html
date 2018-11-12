@@ -1,0 +1,545 @@
+	{include file="public/headers" /}
+	<!--详情开始-->
+	<style>
+		.button {
+			background-color: #4CAF50; /* Green */
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+
+		.button2 {background-color: #008CBA;} /* Blue */
+		.button3 {background-color: #f44336;} /* Red */
+		.button4 {background-color: #e7e7e7; color: black;} /* Gray */
+		.button5 {background-color: #555555;} /* Black */
+	</style>
+	<script>
+        $(function(){
+            $("#store").click(function(){
+
+                $(".lasttwo_close").click(function(){
+                    $(".lasttwo_video").fadeOut()
+                    $(".lasttwo_bg").fadeOut()
+                })
+                $(".lasttwo_video").fadeIn()
+                $(".lasttwo_bg").fadeIn()
+                $(".jrdp").fadeIn()
+                id = $(this).val();
+
+                // $.post("{:url('card/details')}",{id:id},function(data)
+                // {
+                //     if(data =='1'){
+                //         window.location.href="{:url('Login/index')}";
+                //     }else{
+                //         $("#sda").text(data.enterprisename);
+
+                        // var id = data.id;
+
+
+                        $('#enterprisename').html(data.company);
+                        $('#province').html(data.province);
+                        $('#city').html(data.city);
+                        $('#contactname').html(data.name);
+                        $('#contactqq').html(data.qq);
+                        $('#contactphone').html(data.phone);
+                        $('#address').html(data.address);
+                        $('#content').html(data.content);
+
+                    // }
+
+
+                // });
+
+            })
+
+        })</script>
+
+
+		<script type="text/javascript">
+  $(document).ready(function(){
+	  var showproduct = {
+		  "boxid":"showbox",
+		  "sumid":"showsum",
+		  "boxw":344,//宽度,该版本中请把宽高填写成一样
+		  "boxh":344,//高度,该版本中请把宽高填写成一样
+		  "sumw":60,//列表每个宽度,该版本中请把宽高填写成一样
+		  "sumh":60,//列表每个高度,该版本中请把宽高填写成一样
+		  "sumi":7,//列表间隔
+		  "sums":5,//列表显示个数
+		  "sumsel":"sel",
+		  "sumborder":1,//列表边框，没有边框填写0，边框在css中修改
+		  "lastid":"showlast",
+		  "nextid":"shownext"
+		  };//参数定义	  
+	 $.ljsGlasses.pcGlasses(showproduct);//方法调用，务必在加载完后执行
+  });
+</script>
+
+	<div class="lasttwo_video">
+		<div class="lasttwo_close">*</div>
+		<div class="nr">
+			<form action="{:url('Storetobuy/store')}" method="post">
+				<h2>到店购买预留信息</h2>
+				<br>
+				<input type="hidden" name="gid" value="{$goodsinformation->id}">
+				<span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;" >姓名</span> <input type="text" name="name" value="" ><br><br>
+				<span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;" >手机号</span> <input type="text" name="phone" value="" ><br><br>
+				<span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;" >留言</span> <textarea  name="content" style="width: 300px;height:100px;"></textarea><br><br>
+				<button class="button button2">提交</button>
+				<!--<span style=" font-size:18px; color:#fff; font-weight:800; background-color:#B7B7B7; padding:1px; border-radius:2px;" >姓名</span> <input type="text" name="name" value="" >-->
+			</form>
+
+		</div>
+		<!-- <div class="jrdp" ><a id="a1" href="">进入店铺</a></div> -->
+	</div>
+
+
+		<div class="show">
+			<div class="mbox">
+				<div class="catpos">	
+					<img src="__STATIC__/index/images/nav.png"/>
+					<p>您的位置：首页 > 电脑/办公>电脑整机>笔记本</p>
+					<div class="clear"></div>
+				</div>
+				<div class="show_pro">
+					<div class="show_pro_l">
+						<div class="magnifier">
+							<div id="showbox">
+								{volist name="images" id="vo"}
+							 <img src="{$vo}" width="344" height="344" />
+							 {/volist}
+							</div><!--展示图片盒子-->
+
+							<div id="showsum"></div><!--展示图片里边-->
+							<p class="showpage">
+							  <a href="javascript:void(0);" id="showlast"> < </a>
+							  <a href="javascript:void(0);" id="shownext"> > </a>
+							</p>
+						</div>
+
+						<div class="show_pro_con">
+							<p class="show_pro_title">{$goodsinformation->goods_name}</p>
+							<p class="show_pro_price">￥{$goodsinformation->price}</p>
+							<div class="xinxi">
+								<ul>
+									<li>
+										<div class="xinxi_l">商品名</div>
+										<div class="xinxi_r peizhi">{$goodsinformation->goods_name}</div>
+										<div class="clear"></div>
+									</li>
+									<li>
+										<div class="xinxi_l">单价</div>
+										<div class="xinxi_r weight">{$goodsinformation->price}元</div>
+										<div class="clear"></div>
+									</li>
+									<li>
+										<div class="xinxi_l">备注</div>
+										<div class="xinxi_r beizhu">本产品全国联保，享受三包服务，质保期为：一年质保。如因质量问题或故障，凭厂商维修中心或特约维修点的质量检测证明，享受7日内退货，15日内换货，15日以上在质保期内享受免费保修等三包服务！</div>
+										<div class="clear"></div>
+									</li>
+									<div class="clear"></div>
+								</ul>
+							</div>
+							<a class="" >
+								<input id="store" type="button"  class="button1" value="到店购买"/>
+								<a href="{:url('Settlement/index',['id'=>$goodsinformation.id])}"><input type="button" class="button2" value="在线购买"/></a>
+							</div>
+						</div>
+						<div class="clear"></div>
+						<div class="blank30"></div>
+						<div class="wrap">
+
+							<div class="tab">
+								<ul class="tab-hd">
+									<li class="active">产品详情</li>
+									<li>相关参数</li>
+									<li>售后保障</li>
+									<li>查看地图</li>
+									<li>留言</li>
+								</ul>
+								<ul class="tab-bd">
+									<!-- <img src="__STATIC__/index/images/xq.jpg" style="margin: auto;"/> -->
+									<li class="thisclass">{$goodsinformation->content}</li>
+									<li>{$goodsinformation->editorValue}</li>
+									<li>售后保障</li>
+									<li>查看地图</li>
+									<li>留言</li>
+								</ul>
+							</div>
+						</div>
+						<script type="text/javascript">
+							$(function(){
+							    function tabs(tabTit,on,tabCon){
+							        $(tabTit).children().hover(function(){
+							            $(this).addClass(on).siblings().removeClass(on);
+							            var index = $(tabTit).children().index(this);
+							           	$(tabCon).children().eq(index).show().siblings().hide();
+							    	});
+								};
+							    tabs(".tab-hd","active",".tab-bd");
+							});
+						</script>
+
+					</div>
+					<div class="show_pro_r">
+						<div class="show_pro_r_gys">
+							<div class="gys_title">— 供应商信息 —</div>
+							<div class="gys_con">
+								<div class="con1">
+									<a href="{:url('Store/index',['id'=>$buser.id])}"> <p>{$buser.enterprisename}</p></a>
+									<div class="ico">
+										<img src="__STATIC__/index/images/ico1.png"/>
+										<img src="__STATIC__/index/images/ico2.jpg"/>
+										<img src="__STATIC__/index/images/ico3.jpg"/>
+										<img src="__STATIC__/index/images/ico4.jpg"/>
+										<p>1年</p>
+										<div class="clear"></div>
+									</div>
+								</div>
+								<div class="con2">
+									<div class="zixun">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在线咨询</div>
+									<div class="weixin">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关注微信</div>
+									<div class="clear"></div>
+									<div class="blank10"></div>
+									<p>联系卖家：{$buser.contactname}</p>
+									<p>主营产品：{$buser.content}  </p>
+									<p>联系地址：{$buser.address} <a href="/">【查看地图】</a></p>
+									<p>联系电话：<font>{$buser.contactphone}</font></p>
+									<div class="blank10"></div>
+								</div>
+								<div class="con3">
+									<div class="renzheng">
+										<img src="__STATIC__/index/images/ico1.png"/>
+										<p>以上信息已通过渠道精灵官方认证</p>
+										<div class="clear"></div>
+									</div>
+									<div class="con3_button">
+										<a href="{:url('Store/index',['id'=>$buser.id])}"><input type="button" value="进店逛逛"/></a>
+										
+										<div class="clear"></div>
+									</div>
+									<img src="__STATIC__/index/images/erweima.jpg" style="margin: 16px 48px;"/>
+									<p>扫一扫，加微信</p>
+								</div>
+							</div>
+ 						</div>
+						<div class="show_pro_r_tj">
+							<p>店铺推荐</p>
+							<ul>
+								{volist name="goods" id="vo"}
+								<a href="{:url('Goodsdetails/index',['goodsid'=>$vo.id])}"><li>
+									<img style="width: 170px;height: 120px;" src="{$vo.image}"/>
+									<div class="show_pro_r_tj_tit">
+										{$vo.goods_name}
+									</div>
+									<div class="show_pro_r_tj_price">
+										￥{$vo.price}
+									</div>
+								</li></a>
+								{/volist}
+								<div class="clear"></div>
+							</ul>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--详情结束-->
+
+
+		<!--热点商机开始-->
+		<div class="news">
+			<div class="mbox">
+				<div class="news_catname">
+					<p>热点商机</p>
+					<p class="more">更多&gt;&gt;</p>
+					<div class="clear"></div>
+				</div>
+				<div class="news_con">
+					<div class="news_con_left">
+						<img src="__STATIC__/index/images/news1.jpg">
+					</div>
+					<div class="news_con_right">
+						<ul>
+							<div class="num1">
+								<img src="__STATIC__/index/images/num1.jpg">
+							</div>
+							<li>你没有看错！AI香水驾到</li>
+							<li>美国对中国科技品征重税 </li>
+							<li>中国厨电高峰论坛举行！  </li>
+							<li>Xbox用户可免费领取游戏 </li>
+						</ul>
+						<ul>
+							<div class="num1">
+								<img src="__STATIC__/index/images/num1.jpg">
+							</div>
+							<li>你没有看错！AI香水驾到</li>
+							<li>美国对中国科技品征重税 </li>
+							<li>中国厨电高峰论坛举行！  </li>
+							<li>Xbox用户可免费领取游戏 </li>
+						</ul>
+						<ul>
+							<div class="num1">
+								<img src="__STATIC__/index/images/num1.jpg">
+							</div>
+							<li>你没有看错！AI香水驾到</li>
+							<li>美国对中国科技品征重税 </li>
+							<li>中国厨电高峰论坛举行！  </li>
+							<li>Xbox用户可免费领取游戏 </li>
+						</ul>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--热点商机结束-->
+
+			<!--管理开始-->
+		<div class="guanli">
+			<div class="mbox">
+				<div class="guanli_top">
+					<ul>
+						<li>
+							<img src="__STATIC__/index/images/sheng.png" />
+							<div class="guanli_sheng">
+								<p>省钱实惠</p>
+								<font>50000+高性价比商品</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bao.png" />
+							<div class="guanli_sheng">
+								<p>售后保证</p>
+								<font>为您提供售后无忧保障</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/zhi.png" />
+							<div class="guanli_sheng">
+								<p>100%品质保障</p>
+								<font>全场正品,采购无忧</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/images/bi.png" />
+							<div class="guanli_sheng">
+								<p>货比三家</p>
+								<font>比一比,价格更透明</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="guanli_bottom">
+					<div class="bt_left">
+						<ul>
+							<font>新手入门</font>
+							<a href="/">
+								<li>注册/登录</li>
+							</a>
+							<a href="/">
+								<li>会员认证</li>
+							</a>
+							<a href="/">
+								<li>找回密码</li>
+							</a>
+							<a href="/">
+								<li>账号管理</li>
+							</a>
+							<a href="/">
+								<li>会员权益</li>
+							</a>
+						</ul>
+						<ul>
+							<font>使用指南</font>
+							<a href="/">
+								<li>查找商家</li>
+							</a>
+							<a href="/">
+								<li>查找商品</li>
+							</a>
+							<a href="/">
+								<li>如何升级</li>
+							</a>
+							<a href="/">
+								<li>关于置顶</li>
+							</a>
+							<a href="/">
+								<li>关于商铺</li>
+							</a>
+						</ul>
+						<ul>
+							<font>售后/售前</font>
+							<a href="/">
+								<li>售前支持</li>
+							</a>
+							<a href="/">
+								<li>售后服务</li>
+							</a>
+							<a href="/">
+								<li>付款说明</li>
+							</a>
+						</ul>
+						<ul>
+							<font>违规说明</font>
+							<a href="/">
+								<li>违规范围</li>
+							</a>
+							<a href="/">
+								<li>处罚条例</li>
+							</a>
+							<a href="/">
+								<li>违规曝光</li>
+							</a>
+							<a href="/">
+								<li>免责声明</li>
+							</a>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="bt_right">
+						<ul>
+							<font>官方微信</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<ul>
+							<font>微信小程序</font>
+							<li>
+								<img src="__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+
+		<!--管理结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+			<div class="mbox">
+				<ul>
+					<a href="/">
+						<li>关于渠道精灵</li>
+					</a>
+					<a href="/">
+						<li>联系我们</li>
+					</a>
+					<a href="/">
+						<li>采购中心</li>
+					</a>
+					<a href="/">
+						<li>渠道通</li>
+					</a>
+					<a href="/">
+						<li>平台资讯</li>
+					</a>
+					<a href="/">
+						<li>常见问题</li>
+					</a>
+					<li>客服热线：400-8888-8888</li>
+					<div class="clear"></div>
+				</ul>
+				<p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+				<p>技术支持：诺商信息</p>
+				<p>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/images/gongshang.jpg" /></a>
+				</p>
+			</div>
+		</div>
+
+		<!--footer结束-->
+
+		<!--右侧定位开始-->
+		<div class="fixed">
+			<div style="float: left;" class="fixed_right">
+				<img src="__STATIC__/index/images/fixed_right.png"/>
+			</div>
+			<ul style="float: right;">
+				<div class="blank20"></div>
+				<li>
+					<img src="__STATIC__/index/images/login.png" width="20"/>
+					<p>登录</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/zhuce.png" width="20"/>
+					<p>注册</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/images/kefu.png" width="20"/>
+					<p>在线客服</p>
+				</li>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<p><img src="__STATIC__/index/images/bianji.png" width="20"/></p>
+				<p><img src="__STATIC__/index/images/saoma.png" width="20"/></p>
+				<a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/images/huiding.png" width="20"/></p></a>
+				<p id="guanbi"><img src="__STATIC__/index/images/guanbi.png" width="20"/></p>
+			</ul>
+			<div class="clear"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#guanbi").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				  $(".fixed_right").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				});
+			</script>
+            <script type="text/javascript">
+				$(document).ready(function(){
+				  $('#menu').mouseenter(function(){
+				  	$('.absolute').stop().slideDown(300);
+				  	$('.absolute').mouseenter(function(){
+					  $('.absolute').stop();
+
+					  });
+				  });
+				  $("#menu, .absolute").mouseleave(function() {
+					  	$('.absolute').stop().slideUp(250);
+					  });
+				});
+			</script>
+			<script>
+				var timeOut;
+				function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+				window.scrollBy(0,-50);
+				timeOut=setTimeout('scrollToTop()',10);
+				}
+				else clearTimeout(timeOut);
+				}
+			</script>
+		</div>
+
+
+
+		<!--右侧定位结束-->
+	</body>
+
+</html>

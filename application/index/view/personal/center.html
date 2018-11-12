@@ -1,0 +1,45 @@
+{include file="public/headers" /}
+<!--订单页面开始-->
+
+<div class="orders">
+    {include file="public/plist" /}
+    <form action="{:url('Personal/passwordsave')}" method="post">
+        <div class="add_dd">
+
+            <div class="add_tit">
+                <p>修改密码</p>
+            </div>
+            <div class="add_con">
+
+                <div class="ddxx_2">
+                    <div class="xx_adress"><span>*</span>原密码：</div>
+                    <input type="text" class="xx_input" value="" name="passwor" placeholder="请输入原密码"/>
+                </div>
+                <div class="ddxx_3">
+                    <div class="xx_adress">新密码：</div>
+                    <input type="text" class="yzbm_input" value="" name="password" placeholder="请输入新密码"/>
+                </div>
+
+                <div class="ddxx_2">
+                    <div class="xx_adress"><span>*</span>确认新密码:</div>
+                    <input type="text" class="xx_input" value="" name="passwords" placeholder="确认新密码"/>
+                </div>
+
+
+            </div>
+
+            <div class="bc">
+                <button class="baocun">保存</button>
+
+            </div></form>
+
+
+</div>
+<div class="clear"></div>
+
+</div>
+<script src="js/distpicker.data.js"></script>
+<script src="js/distpicker.js"></script>
+<script src="js/main.js"></script>
+<!--订单页面结束-->
+{include file="public/footers" /}

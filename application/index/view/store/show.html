@@ -1,0 +1,288 @@
+{include file="public/headers" /}
+
+     {include file="public/storeheader" /}
+   <!--店铺内容页面-->
+<div class="cp_neirong">
+    	<div class="cp_neirong_con">
+        	<div class="cp_pro">
+    	
+            	<div class="pro_title">
+                	<img style="width: 85px;height: 35px;" src="{$brand->image}"/>
+            		<h1>{$tree->name}</h1>
+                    
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+                <div class="pro_content">
+                	<ul>
+                		{volist name="res" id="vo"}
+                        <li>
+                        	<div class="cx_pro">
+                        		<img src="{$vo.image}"/>
+                                <h2><span>￥</span>{$vo.price}</h2>
+                                <p>{$vo.goods_name}</p>
+                            </div>
+                        </li>
+                        {/volist}
+  
+                        <div class="clear"></div>
+                        
+                    </ul>
+                    <div class="pages">
+							<span>上一页</span>
+							<span class="selecte">1</span>
+							<span>2</span>
+							<span>3</span>
+							<span>4</span>
+							<span>5</span>
+							<span>下一页</span>
+						</div>
+                </div>
+            </div>
+        </div>
+</div>
+    
+    <!--店铺内容页面-->
+<!--店铺页面结束-->
+
+			<!--管理开始-->
+		<div class="guanli">
+			<div class="mbox">
+				<div class="guanli_top">
+					<ul>
+						<li>
+							<img src="__STATIC__/index/__STATIC__/index/images/sheng.png" />
+							<div class="guanli_sheng">
+								<p>省钱实惠</p>
+								<font>50000+高性价比商品</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/__STATIC__/index/images/bao.png" />
+							<div class="guanli_sheng">
+								<p>售后保证</p>
+								<font>为您提供售后无忧保障</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/__STATIC__/index/images/zhi.png" />
+							<div class="guanli_sheng">
+								<p>100%品质保障</p>
+								<font>全场正品,采购无忧</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<li>
+							<img src="__STATIC__/index/__STATIC__/index/images/bi.png" />
+							<div class="guanli_sheng">
+								<p>货比三家</p>
+								<font>比一比,价格更透明</font>
+							</div>
+							<div class="clear"></div>
+						</li>
+						<div class="clear"></div>
+					</ul>
+				</div>
+				<div class="guanli_bottom">
+					<div class="bt_left">
+						<ul>
+							<font>新手入门</font>
+							<a href="/">
+								<li>注册/登录</li>
+							</a>
+							<a href="/">
+								<li>会员认证</li>
+							</a>
+							<a href="/">
+								<li>找回密码</li>
+							</a>
+							<a href="/">
+								<li>账号管理</li>
+							</a>
+							<a href="/">
+								<li>会员权益</li>
+							</a>
+						</ul>
+						<ul>
+							<font>使用指南</font>
+							<a href="/">
+								<li>查找商家</li>
+							</a>
+							<a href="/">
+								<li>查找商品</li>
+							</a>
+							<a href="/">
+								<li>如何升级</li>
+							</a>
+							<a href="/">
+								<li>关于置顶</li>
+							</a>
+							<a href="/">
+								<li>关于商铺</li>
+							</a>
+						</ul>
+						<ul>
+							<font>售后/售前</font>
+							<a href="/">
+								<li>售前支持</li>
+							</a>
+							<a href="/">
+								<li>售后服务</li>
+							</a>
+							<a href="/">
+								<li>付款说明</li>
+							</a>
+						</ul>
+						<ul>
+							<font>违规说明</font>
+							<a href="/">
+								<li>违规范围</li>
+							</a>
+							<a href="/">
+								<li>处罚条例</li>
+							</a>
+							<a href="/">
+								<li>违规曝光</li>
+							</a>
+							<a href="/">
+								<li>免责声明</li>
+							</a>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="bt_right">
+						<ul>
+							<font>官方微信</font>
+							<li>
+								<img src="__STATIC__/index/__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<ul>
+							<font>微信小程序</font>
+							<li>
+								<img src="__STATIC__/index/__STATIC__/index/images/weixin.jpg" />
+							</li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+            
+            
+		</div>
+
+		<!--管理结束-->
+
+		<!--footer开始-->
+		<div class="footer">
+			<div class="mbox">
+				<ul>
+					<a href="/">
+						<li>关于渠道精灵</li>
+					</a>
+					<a href="/">
+						<li>联系我们</li>
+					</a>
+					<a href="/">
+						<li>采购中心</li>
+					</a>
+					<a href="/">
+						<li>渠道通</li>
+					</a>
+					<a href="/">
+						<li>平台资讯</li>
+					</a>
+					<a href="/">
+						<li>常见问题</li>
+					</a>
+					<li>客服热线：400-8888-8888</li>
+					<div class="clear"></div>
+				</ul>
+				<p>济南儒商科技版权所有 | 鲁ICP备038973297号-1</p>
+				<p>技术支持：诺商信息</p>
+				<p>
+					<a href="/"><img src="__STATIC__/index/__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/__STATIC__/index/images/gongshang.jpg" /></a>
+					<a href="/"><img src="__STATIC__/index/__STATIC__/index/images/gongshang.jpg" /></a>
+				</p>
+			</div>
+		</div>
+
+		<!--footer结束-->
+		
+		<!--右侧定位开始-->
+		<div class="fixed">
+			<div style="float: left;" class="fixed_right">
+				<img src="__STATIC__/index/__STATIC__/index/images/fixed_right.png"/>
+			</div>
+			<ul style="float: right;">
+				<div class="blank20"></div>
+				<li>
+					<img src="__STATIC__/index/__STATIC__/index/images/login.png" width="20"/>
+					<p>登录</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/__STATIC__/index/images/zhuce.png" width="20"/>
+					<p>注册</p>
+				</li>
+				<li>
+					<img src="__STATIC__/index/__STATIC__/index/images/kefu.png" width="20"/>
+					<p>在线客服</p>
+				</li>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<div class="blank50"></div>
+				<p><img src="__STATIC__/index/__STATIC__/index/images/bianji.png" width="20"/></p>
+				<p><img src="__STATIC__/index/__STATIC__/index/images/saoma.png" width="20"/></p>
+				<a href="#" onclick="scrollToTop();return false"><p><img src="__STATIC__/index/__STATIC__/index/images/huiding.png" width="20"/></p></a>
+				<p id="guanbi"><img src="__STATIC__/index/__STATIC__/index/images/guanbi.png" width="20"/></p>
+			</ul>
+			<div class="clear"></div>
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#guanbi").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				  $(".fixed_right").click(function(){
+				  $('.fixed ul').animate({width:'toggle'},350);
+				  });
+				});
+			</script>
+            <script type="text/javascript">
+				$(document).ready(function(){
+				  $('#menu').mouseenter(function(){
+				  	$('.absolute').stop().slideDown(300);
+				  	$('.absolute').mouseenter(function(){
+					  $('.absolute').stop();
+					  
+					  });
+				  });
+				  $("#menu, .absolute").mouseleave(function() {
+					  	$('.absolute').stop().slideUp(250);
+					  });
+				});
+			</script>
+			<script>
+				var timeOut;
+				function scrollToTop() {
+				if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0){
+				window.scrollBy(0,-50);
+				timeOut=setTimeout('scrollToTop()',10);
+				}
+				else clearTimeout(timeOut);
+				}
+			</script>
+		</div>
+		
+		
+		
+		<!--右侧定位结束-->
+	</body>
+
+</html>

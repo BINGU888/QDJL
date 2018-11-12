@@ -1,0 +1,44 @@
+{extend name="public/base" /}
+{block name="main"}
+</br>
+<table class="table table-border table-bordered table-bg table-sort">
+    <thead>
+    <tr class="text-c">
+        <th width="25"><input type="checkbox" name="" value=""></th>
+        <th width="70">ID</th>
+        <th width="80">品牌名称</th>
+        <th width="200">LOGO</th>
+        <th width="200">开通时间</th>
+        <th width="120">服务</th>
+
+        <th width="100">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    {volist name="res" id="vo"}
+    <tr class="text-c">
+        <td><input name="" type="checkbox" value=""></td>
+        <td>{$vo.id}</td>
+        <!-- <td><input type="text" class="input-text text-c" value="1"></td> -->
+        <td>{$vo.brandid}</td>
+        <!--<td class="text-l">{$vo.starttime|date="Y年m月d日",###}</td>-->
+        <td><img style="height: 70px;width: 100px;" src="{$vo.image}"></td>
+        <td>{$vo.starttime|date="Y-m-d",###}</td>
+        <td><span
+                {if condition ="$vo.status == 0"}class="label label-primary">VIP{/if}
+            {if condition ="$vo.status == 1"}class="label label-success">SVIP{/if}
+        </span></td>
+        {if condition ="$vo.status == 0"}
+        <td> <a href="{:url('Service/status',['id'=>$vo.id])}"> <span class="label label-primary">升级服务
+        </span></td></a>
+        {/if}
+        {if condition ="$vo.status == 1"}
+        <td> <span class="label label-primary">最高级
+        </span></td>
+        {/if}
+    </tr>
+    {/volist}
+    </tbody>
+</table>
+{/block}
+{/block}

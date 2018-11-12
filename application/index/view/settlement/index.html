@@ -1,0 +1,166 @@
+{include file="public/headers" /}
+<!--购物详情页面开始-->
+<div class="payment">
+    <div class="qiehuan">
+        <div class="qiehuan1">
+        	<p>我的购物车</p>
+        </div>
+ 
+        <div class="qiehuan2">
+        	<p>填写核对订单信息</p>
+        </div>
+       
+        <div class="qiehuan3">
+        	<p>提交订单</p>
+        </div>
+ 	<div class="clear"></div>     
+    </div>
+    <div class="clear"></div>
+<div class="qrdz">
+	<div class="qr_tit">
+		<h3>填写并审核订单信息</h3>
+    </div>
+    <div class="qr_con">
+    	<p>收件人信息<a href="{:url('shipping/index')}">新增收货地址</a></p>
+    	<ul>
+            {volist name="shipping" id="vo"}
+        	<li class='{if condition="$vo.status eq 1"}on{/if}'>
+            	<div class="dw"><img src="__STATIC__/index/images/dw.png"/></div>
+            	<div class="xx name">{$vo.name}</div>
+                <div class="xx adress">{$vo.address}</div>
+                <div class="xx tel">{$vo.phone}</div>
+               <a href="{:url('Shipping/status',['id'=>$vo.id])}"><div class="sz mr">{if condition="$vo.status eq 1"}当前默认地址{/if}{if condition="$vo.status eq 0"}设置默认地址{/if}</div></a>
+                <a href="{:url('Shipping/sexit',['id'=>$vo.id])}"><div class="sz bj">编辑</div></a>
+                <a href="{:url('Shipping/delete',['id'=>$vo.id])}"><div class="sz del">删除</div></a>
+                <div class="clear"></div>
+            </li>
+            {/volist}
+        </ul>
+    </div>
+    <div class="qrCon_bot">
+    	<div class="qrCon_tit">
+        	<h3>确认订单信息</h3>
+        </div>
+
+        <div class="ddxx">
+            <form action="{:url('settlement/pay',['id'=>$goods.id])}" method="post">
+        	<h2>配送至<span>山东省济南市</span></h2>
+        	<ul>
+            	<li>
+                    <div class="dx_box1">
+                    	<div class="box1_left">
+                        	<font><input type="checkbox"/> &nbsp;&nbsp;&nbsp;&nbsp;默认快递发货</font>
+                        </div>
+                          
+                        <ul>
+                           <li><p>单价</p></li>
+                           <li><p>数量</p></li>
+                           <li><p>快递费</p></li>
+                           <li><p>小计</p></li>
+                         <!--   <li><p>编辑</p></li> -->
+                        </ul>
+                    </div>
+                    <div class="dx_box2">
+                    	<div class="box2_left">
+                            <div class="dx_pic"><img src="__STATIC__/index/images/list_pro.jpg"/></div>
+                            <div id="pro_ms">
+                            	<p>{$goods.goods_name}</p>
+                              <!--   <span>属性：</span> -->
+                            </div>
+                        </div>
+                        <ul>
+                        	<li id="price">{$goods.price}</li>
+                            <li><input class="jia" id="jian" type="button" value="-"/><input id="num" name="num" value="{$goods.num}" type="text"/><input class="jian"  id="jia" type="button" value="+"/></li>
+                            <li id="kuaidi">{$goods.singleton}</li>
+                            <li id="xiaoji">{$goods.goodsprice}元</li>
+                            <!-- <li>删除</li> -->
+                        </ul>
+                    </div>
+                    <div class="dx_box3">
+                    	<div class="liuyan">给商家留言：<input type="text" value="" placeholder="请填写与商家确认的信息"/></div>
+                    	<h4>运费险：<b>商家赠送</b></h4>
+                        <div class="box3_R">
+                        	<p>商品金额：<span id="spje">{$goods.goodsprice}</span></p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+           
+        </div>
+        
+         
+  <div class="totle">
+  	<div class="totle_L">
+    	<p><input type="checkbox"/>&nbsp;&nbsp;&nbsp;&nbsp;全选</p>
+        <p><a href="">清空选中商品</a></p>
+        
+    </div>
+    <div class="totle_R">
+    	<ul>
+        	<li>共计<span>1</span>件商品</li>
+            <li>商品应付总共:<span id="zongjia">{$goods.total}</span>元</li>
+            <li><button><input type="submit" value="去结算"/></button></li>
+        </ul>
+    </div>
+  </div>
+  </div>
+</div>
+ </form>
+</div>	
+<!--购物详情页面结束-->
+<script type="text/javascript">
+    $("#jia").click(function(){
+       var num= $("#num").val();
+       num = Number(num);
+       if (num >= 1) {
+
+           var num = num+1;
+        }
+        if (num == 0) {
+            num = 1;
+        }
+        $("#num").val(num);
+        jisuan();
+    });
+
+    $("#jian").click(function(){
+       var num= $("#num").val();
+       num = Number(num);
+       if (num >= 1) {
+
+           var num = num-1;
+        }
+        if (num == 0) {
+            num = 1;
+        }
+        $("#num").val(num);
+        jisuan();
+    })
+
+
+     $("#num").bind('input porpertychange',function(){    
+        // alert($("#num").val());
+        
+        jisuan();
+  
+
+    });
+
+     function jisuan(){
+        
+       var num = Number($("#num").val());
+       var price = Number($("#price").text());
+       var kuaidi = Number($("#kuaidi").text());
+
+       if (num <=0) {
+        num =1;
+       }
+       var zongjia =  num*price+num*kuaidi;
+       var spje = num*price;
+       $("#spje").text(spje);
+       $("#zongjia").text(zongjia);
+       $("#xiaoji").text(spje);
+     }
+
+</script>
+{include file="public/footers" /}

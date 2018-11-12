@@ -1,0 +1,40 @@
+{include file="public/headers" /}
+<style type="text/css">
+    body,h1,h2,h3,h4,h5,h6,p,ul,li,dl,dt,dd{padding:0;margin:0;font-size:9pt;}
+    li{list-style:none;}img{border:none;}em{font-style:normal;}
+    a{color:#555;text-decoration:none;outline:none;blr:this.onFocus=this.blur();font-size:15px;}
+    a:hover{color:#000;text-decoration:underline;}
+    .clear{height:0;overflow:hidden;clear:both;}
+    h4{font-size:20px;height:27px;line-height:27px;padding-left:10px;border-bottom:#ddd 1px solid;}
+    .news{width:1890px;border:#ddd 0px solid; text-align: center;margin: auto;}
+    .news ul{padding:5px 10px;}
+    .news ul li{height:35px;line-height:30px;overflow:hidden;}
+    /*.news{*/
+    /**/
+    /*background-color: #fff;*/
+    /*border-radius: 20px;*/
+    /*width: 300px;*/
+    /*height: 350px;*/
+    /*margin: auto;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*}*/
+</style>
+<body>
+<div class="news">
+
+    <h4>常见问题</h4>
+    <ul>
+        {volist name="res" id="vo"}
+        <li>
+
+            <a title="测试测试测试测试测试测试测试" target="_blank" href="{:url('Information/show',['id'=>$vo.id])}">
+                {$vo.title}</a></li>
+        {/volist}
+    </ul>
+</div>
+</body>
+{include file="public/footers" /}

@@ -1,0 +1,12 @@
+{include file="public/headers" /}
+
+{include file="public/storeheader" /}
+<div style="width:850px;text-align: center;margin: auto; >
+<span id="content">
+<h2>{$res->title}</h2>
+<span style="font-size:17px">{$res->starttime|date="Y-m-d H:i",###}</span>
+<p style="font-size:18px">{$res->content|html_entity_decode}</p>
+</span>
+</div>
+
+{include file="public/footers" /}
