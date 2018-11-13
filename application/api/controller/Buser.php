@@ -69,25 +69,30 @@ class Buser extends Bases
                 $bid = Model('Buservip')->bid($pid,$cityid);
 
                 $res = array_merge($svip,$vip,$bid);
-
-                $limit =ceil(count($res)/20);
+                // 分页条数
+                $pagee=2;
+                $pagees = $pagee+1;
+                $limit =ceil(count($res)/$pagee);
                 //分页不可大过总页
                     if ($pages>$limit)
                     {
                         $pages = $limit;
                     }
                         if ($pages>1) {
-                            $page = 20 * $pages;
+
+                            $page = $pagee * $pages;
+
                             foreach ($res as $key => $value) {
-                                if ($key < $page && $key > $page - 21) {
+
+                                if ($key < $page && $key > $page -$pagees) {
 
                                     $dates[] = $value;
                                 }
                             }
                         }else{
-                            $page = 20;
+
                             foreach ($res as $k => $value) {
-                                if ($k < $page) {
+                                if ($k < $pagee) {
 
                                     $dates[] = $value;
 
@@ -100,9 +105,12 @@ class Buser extends Bases
                       $dates = [];
                   }
                   //将品牌插入
+                $brand = collection($brand)->toArray();
                     $dates['brand']= $brand;
-                    $data = json_encode($dates,JSON_FORCE_OBJECT);
-                    return jsonp($data);
+                    $dates['pages']=$pages;
+                  $datas = collection($dates)->toArray();
+//                  dump($datas);die;
+                    return jsonp($datas);
             }
         if (!empty($brand))
         {
@@ -113,22 +121,26 @@ class Buser extends Bases
             //获取当前普通用户
             $bid = Model('Buservip')->bids($brandid,$cityid);
             $res = array_merge($svip,$vip,$bid);
-            $limit =ceil(count($res)/20);
+            // 分页条数
+            $pagee=1;
+            $pagees = $pagee+1;
+            $limit =ceil(count($res)/$pagee);
+
             //分页不可大过总页
             if ($pages>$limit)
             {
                 $pages = $limit;
             }
             if ($pages>1) {
-                $page = 20 * $pages;
+                $page = $pagee * $pages;
                 foreach ($res as $key => $value) {
-                    if ($key < $page && $key > $page - 21) {
+                    if ($key < $page && $key > $page - $pagees) {
 
                         $dates[] = $value;
                     }
                 }
             }else{
-                $page = 20;
+                $page = $pagee;
                 foreach ($res as $k => $value) {
                     if ($k < $page) {
 
